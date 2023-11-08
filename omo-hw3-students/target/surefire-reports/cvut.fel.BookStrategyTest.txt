@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: cvut.fel.BookStrategyTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.01 s <<< FAILURE! - in cvut.fel.BookStrategyTest
+teststrategySimple(cvut.fel.BookStrategyTest)  Time elapsed: 0.008 s  <<< ERROR!
+java.util.NoSuchElementException
+	at cvut.fel.BookStrategyTest.teststrategySimple(BookStrategyTest.java:27)
+

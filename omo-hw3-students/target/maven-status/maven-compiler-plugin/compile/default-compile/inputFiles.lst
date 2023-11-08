@@ -1,0 +1,17 @@
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\model\Book.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\services\strategy\BookStrategy.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\dao\AuthorRepository.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\model\Author.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\StartApplication.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\dao\BookRepository.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\services\AuthorServiceImpl.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\model\Library.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\facade\dto\BookDto.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\dao\LibraryRepository.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\facade\mapper\BookMapper.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\services\BookServiceImpl.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\services\LibraryServiceImpl.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\model\Address.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\facade\BookFacadeImpl.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\services\strategy\ImutableBookStrategy.java
+C:\moje\CVUT-FEL\DOKTORANDSKESTUDIUM\OMO\2023\spring-data-jpa\src\main\java\cvut\fel\services\strategy\SimpleBookStrategy.java
