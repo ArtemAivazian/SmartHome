@@ -1,1 +1,1 @@
-On this branch are stored homework of the subject B231_B6B36OMO
+On this branch are stored homework on the subject B231_B6B36OMO
