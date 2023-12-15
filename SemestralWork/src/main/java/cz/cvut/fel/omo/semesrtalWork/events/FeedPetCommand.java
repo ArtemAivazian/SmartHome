@@ -1,6 +1,6 @@
-package cz.cvut.fel.omo.semesrtalWork.Events;
+package cz.cvut.fel.omo.semesrtalWork.events;
 
-public class FeedPetCommand implements Command{
+public class FeedPetCommand implements ICommand {
     private EventHandler handler;
 
     public FeedPetCommand(EventHandler handler) {

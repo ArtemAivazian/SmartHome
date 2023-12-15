@@ -1,6 +1,6 @@
-package cz.cvut.fel.omo.semesrtalWork.Events;
+package cz.cvut.fel.omo.semesrtalWork.events;
 
-public class TakeSkisCommand implements Command{
+public class TakeSkisCommand implements ICommand {
     private EventHandler handler;
 
     public TakeSkisCommand(EventHandler handler) {

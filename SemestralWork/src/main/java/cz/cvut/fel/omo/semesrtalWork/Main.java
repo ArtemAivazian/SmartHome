@@ -1,9 +1,8 @@
 package cz.cvut.fel.omo.semesrtalWork;
 
-import cz.cvut.fel.omo.semesrtalWork.Events.Adult;
-import cz.cvut.fel.omo.semesrtalWork.Events.EventHandler;
-import cz.cvut.fel.omo.semesrtalWork.Events.FeedPetCommand;
-import cz.cvut.fel.omo.semesrtalWork.Events.TakeSkisCommand;
+import cz.cvut.fel.omo.semesrtalWork.events.EventHandler;
+import cz.cvut.fel.omo.semesrtalWork.events.FeedPetCommand;
+import cz.cvut.fel.omo.semesrtalWork.events.TakeSkisCommand;
 
 public class Main {
     public static void main(String[] args) {
