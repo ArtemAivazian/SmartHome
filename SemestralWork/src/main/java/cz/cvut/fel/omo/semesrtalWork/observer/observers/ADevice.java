@@ -12,8 +12,23 @@ public abstract class ADevice {
     public void changeState (ADeviceState state){
         deviceState = state;
     }
-    public void turnOn() {
-        deviceState.turnOn();
+
+    public void plugIn() {
+        deviceState.plugIn();
+    }
+
+    public void plugOut() {
+        deviceState.plugOut();
+    }
+
+    public void use() {
+        deviceState.use();
+    }
+    public void stopUsage() {
+        deviceState.stopUsage();
+    }
+    public void fix() {
+        deviceState.fix();
     }
     public abstract void update();
 }

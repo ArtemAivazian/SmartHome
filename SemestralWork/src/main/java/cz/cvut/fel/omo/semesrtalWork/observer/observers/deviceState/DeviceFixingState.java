@@ -2,29 +2,30 @@ package cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
 
-public class DeviceOffState extends ADeviceState{
-    public DeviceOffState(ADevice device, State state) {
+public class DeviceFixingState extends ADeviceState{
+    public DeviceFixingState(ADevice device, State state) {
         super(device, state);
     }
 
+
     @Override
     public void use() {
-        device.changeState(new DeviceUsingState(device, State.USING));
+
     }
 
     @Override
     public void stopUsage() {
-        System.out.println("???");
+
     }
 
     @Override
     public void fix() {
-        System.out.println("???");
+
     }
 
     @Override
     public void stopFix() {
-
+        device.changeState(new DeviceOffState(device, State.OFF));
     }
 
     @Override
