@@ -1,5 +1,7 @@
 package cz.cvut.fel.omo.semesrtalWork.location.builder;
 
+import cz.cvut.fel.omo.semesrtalWork.Inhabitans.AInhabitant;
+import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.location.Floor;
 import cz.cvut.fel.omo.semesrtalWork.location.Room;
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
@@ -16,6 +18,12 @@ public class RoomBuilder implements IBuilder{
     }
     public void addDevice(ADevice device) {
         room.addDevice(device);
+    }
+    public void addItem(AItem item) {
+        room.addItem(item);
+    }
+    public void addInhabitant(AInhabitant inhabitant) {
+        room.addInhabitand(inhabitant);
     }
 
     public void reset() {

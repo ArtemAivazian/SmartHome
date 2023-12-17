@@ -1,5 +1,9 @@
 package cz.cvut.fel.omo.semesrtalWork;
 
+import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Adult;
+import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Child;
+import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
+import cz.cvut.fel.omo.semesrtalWork.item.Bike;
 import cz.cvut.fel.omo.semesrtalWork.location.Floor;
 import cz.cvut.fel.omo.semesrtalWork.location.House;
 import cz.cvut.fel.omo.semesrtalWork.location.Room;
@@ -63,6 +67,7 @@ public class Main {
         roomBuilder.addDevice(lamp);
         Room childRoom = roomBuilder.getResult();
 
+        childRoom.addInhabitand(new Pet());
         roomBuilder.addSensor(new HeatASensor());
         Room adultRoom = roomBuilder.getResult();
 
@@ -80,6 +85,9 @@ public class Main {
 
 
         childRoom.addSensor(new LightASensor());
+        childRoom.addItem(new Bike());
+        childRoom.addInhabitand(new Child());
+        childRoom.addInhabitand(new Adult());
 
 
 
