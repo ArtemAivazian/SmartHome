@@ -21,7 +21,9 @@ public class FloorBuilder implements IBuilder{
         this.floor = new Floor();
     }
     public Floor getResult() {
-        return floor;
+        Floor result = floor;
+        reset();
+        return result;
     }
 
 

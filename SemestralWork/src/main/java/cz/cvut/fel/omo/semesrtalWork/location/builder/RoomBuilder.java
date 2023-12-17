@@ -22,6 +22,8 @@ public class RoomBuilder implements IBuilder{
         this.room = new Room();
     }
     public Room getResult() {
-        return room;
+        Room result = room;
+        reset();
+        return result;
     }
 }

@@ -25,6 +25,8 @@ public class HouseBuilder implements IBuilder{
     }
 
     public House getResult() {
-        return house;
+        House result = house;
+        reset();
+        return result;
     }
 }

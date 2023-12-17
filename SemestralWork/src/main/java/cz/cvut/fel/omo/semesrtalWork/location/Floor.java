@@ -9,7 +9,7 @@ import java.util.List;
 public class Floor {
     private List<Room> rooms = new ArrayList<>();
     private List<ASensor> sensorsOnFloor = new ArrayList<>();
-    private List<ADevice> devicesOnFloor = new ArrayList<>();
+
 
     public void addRoom(Room room) {
         rooms.add(room);

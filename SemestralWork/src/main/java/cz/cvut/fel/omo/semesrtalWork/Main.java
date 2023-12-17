@@ -79,6 +79,9 @@ public class Main {
         House house = houseBuilder.getResult();
 
 
+        childRoom.addSensor(new LightASensor());
+
+
 
 
 
