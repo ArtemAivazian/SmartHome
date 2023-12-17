@@ -1,12 +1,13 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.lightdevices;
 
+import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.LightAbstract;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
 public class Lamp extends LightAbstract {
     private LightASensor lightSensor;
 
-    private final int treashold = 0;
+    private final Threshold threshold = Threshold.LOW;
 
     public Lamp(LightASensor lightSensor) {
         this.lightSensor = lightSensor;
@@ -14,7 +15,7 @@ public class Lamp extends LightAbstract {
 
     @Override
     public void execute() {
-        if (lightSensor.getValue() == treashold)
+        if (lightSensor.getValue() == threshold.getValue())
             System.out.println("Lamp has been turned on");
         else
             System.out.println("Lamp has been turned off");
