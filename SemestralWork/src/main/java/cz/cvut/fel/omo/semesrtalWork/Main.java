@@ -1,8 +1,12 @@
 package cz.cvut.fel.omo.semesrtalWork;
 
-import cz.cvut.fel.omo.semesrtalWork.events.EventHandler;
-import cz.cvut.fel.omo.semesrtalWork.events.FeedPetCommand;
-import cz.cvut.fel.omo.semesrtalWork.events.TakeSkisCommand;
+import cz.cvut.fel.omo.semesrtalWork.location.Floor;
+import cz.cvut.fel.omo.semesrtalWork.location.House;
+import cz.cvut.fel.omo.semesrtalWork.location.Room;
+import cz.cvut.fel.omo.semesrtalWork.location.builder.*;
+import cz.cvut.fel.omo.semesrtalWork.observer.lightdevices.Lamp;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,19 +34,53 @@ public class Main {
 //        lightSensor.setValue(0);
 //        heatSensor.setValue(10);
 
-        var handler = new EventHandler();
-        var feed_pet = new FeedPetCommand(handler);
-        var take_skis = new TakeSkisCommand(handler);
-        var pedro = new Adult();
+//        var handler = new EventHandler();
+//        var feed_pet = new FeedPetCommand(handler);
+//        var take_skis = new TakeSkisCommand(handler);
+//        var pedro = new Adult();
+//
+//
+//        //feeding executing
+//        pedro.setCommand(feed_pet);
+//        pedro.invokeEvent();
+//
+//        //taking skis executing
+//        pedro.setCommand(take_skis);
+//        pedro.invokeEvent();
+
+        //Builders
+        HouseBuilder houseBuilder = new HouseBuilder();
+        FloorBuilder floorBuilder = new FloorBuilder();
+        RoomBuilder roomBuilder = new RoomBuilder();
+
+        //Rooms
+        LightASensor lightASensor = new LightASensor();
+        HeatASensor heatASensor = new HeatASensor();
+        Lamp lamp = new Lamp(lightASensor);
+
+        roomBuilder.addSensor(lightASensor);
+        roomBuilder.addSensor(heatASensor);
+        roomBuilder.addDevice(lamp);
+        Room childRoom = roomBuilder.getResult();
+
+        roomBuilder.addSensor(new HeatASensor());
+        Room adultRoom = roomBuilder.getResult();
+
+        //Floors
+        floorBuilder.addRoom(childRoom);
+        floorBuilder.addRoom(adultRoom);
+        floorBuilder.addSensor(new LightASensor());
+        Floor first = floorBuilder.getResult();
+
+        //House
+        houseBuilder.addSensor(new HeatASensor());
+        houseBuilder.addSensor(new LightASensor());
+        houseBuilder.addFloor(first);
+        House house = houseBuilder.getResult();
 
 
-        //feeding executing
-        pedro.setCommand(feed_pet);
-        pedro.invokeEvent();
 
-        //taking skis executing
-        pedro.setCommand(take_skis);
-        pedro.invokeEvent();
+
 
     }
 }

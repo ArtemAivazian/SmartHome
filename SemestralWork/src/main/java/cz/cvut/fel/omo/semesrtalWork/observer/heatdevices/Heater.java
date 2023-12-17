@@ -1,18 +1,17 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.heatdevices;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.HeatAbstract;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatSensor;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightSensor;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
 
 public class Heater extends HeatAbstract {
 
-    private HeatSensor heatSensor;
+    private HeatASensor heatSensor;
     private int treasholder = 5;
-    public Heater(HeatSensor heatSensor) {
+    public Heater(HeatASensor heatSensor) {
         this.heatSensor = heatSensor;
     }
 
-    public Heater(HeatSensor heatSensor, int treasholder) {
+    public Heater(HeatASensor heatSensor, int treasholder) {
         this.heatSensor = heatSensor;
         this.treasholder = treasholder;
     }
@@ -24,4 +23,5 @@ public class Heater extends HeatAbstract {
         else
             System.out.println("Heater has been turned off");
     }
+
 }

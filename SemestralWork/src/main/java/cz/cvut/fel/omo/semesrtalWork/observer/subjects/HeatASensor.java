@@ -1,6 +1,6 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.subjects;
 
-public class HeatSensor extends Sensor {
+public class HeatASensor extends ASensor {
     private int value;
 
     public int getValue() {
@@ -13,7 +13,7 @@ public class HeatSensor extends Sensor {
     }
 
     @Override
-    protected void build() {
+    public void build() {
         System.out.println("Create HeatSensor");
     }
 }

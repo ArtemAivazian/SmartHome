@@ -1,15 +1,14 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.lightdevices;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatSensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.LightAbstract;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightSensor;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
 public class SolarPanel extends LightAbstract {
-    private LightSensor lightSensor;
+    private LightASensor lightSensor;
 
     private final int treashold = 5;
 
-    public SolarPanel(LightSensor lightSensor) {
+    public SolarPanel(LightASensor lightSensor) {
         this.lightSensor = lightSensor;
     }
 
@@ -20,4 +19,5 @@ public class SolarPanel extends LightAbstract {
         else
             System.out.println("Solar panel has been turned off");
     }
+
 }

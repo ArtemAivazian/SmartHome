@@ -6,7 +6,7 @@ import cz.cvut.fel.omo.semesrtalWork.observer.observers.LightAbstract;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Sensor {
+public abstract class ASensor {
     protected long time = 0;
     private List<LightAbstract> lightDevices = new ArrayList<>();
     private List<HeatAbstract> heatDevices = new ArrayList<>();
@@ -28,5 +28,5 @@ public abstract class Sensor {
             device.update();
         }
     }
-    protected abstract void build();
+    public abstract void build();
 }

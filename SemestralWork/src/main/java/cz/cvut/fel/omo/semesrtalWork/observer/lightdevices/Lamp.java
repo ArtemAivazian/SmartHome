@@ -1,14 +1,14 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.lightdevices;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.LightAbstract;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightSensor;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
 public class Lamp extends LightAbstract {
-    private LightSensor lightSensor;
+    private LightASensor lightSensor;
 
     private final int treashold = 0;
 
-    public Lamp(LightSensor lightSensor) {
+    public Lamp(LightASensor lightSensor) {
         this.lightSensor = lightSensor;
     }
 
