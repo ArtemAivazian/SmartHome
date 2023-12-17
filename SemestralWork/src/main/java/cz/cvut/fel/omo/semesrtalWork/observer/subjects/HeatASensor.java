@@ -11,4 +11,9 @@ public class HeatSensor extends Sensor {
         this.value = value;
         notifyHeatDevices();
     }
+
+    @Override
+    protected void build() {
+        System.out.println("Create HeatSensor");
+    }
 }
