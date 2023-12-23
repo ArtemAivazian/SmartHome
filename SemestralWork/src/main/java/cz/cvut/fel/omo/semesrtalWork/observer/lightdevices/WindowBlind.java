@@ -1,7 +1,7 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.lightdevices;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.LightAbstract;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.LightAbstract;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
 public class WindowBlind extends LightAbstract {

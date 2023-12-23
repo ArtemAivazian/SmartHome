@@ -1,6 +1,6 @@
-package cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState;
+package cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public abstract class ADeviceState {
     protected ADevice device;

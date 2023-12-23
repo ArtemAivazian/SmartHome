@@ -1,6 +1,5 @@
 package cz.cvut.fel.omo.semesrtalWork.location;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 
 import java.util.ArrayList;

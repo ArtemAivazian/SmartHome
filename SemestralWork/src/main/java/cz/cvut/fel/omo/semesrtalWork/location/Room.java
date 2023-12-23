@@ -2,7 +2,7 @@ package cz.cvut.fel.omo.semesrtalWork.location;
 
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.AInhabitant;
 import cz.cvut.fel.omo.semesrtalWork.item.AItem;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class Room {
     public void addItem(AItem item) {
         itemsInRoom.add(item);
     }
-    public void addInhabitand(AInhabitant inhabitant) {
+    public void addInhabitant(AInhabitant inhabitant) {
         inhabitantsInRoom.add(inhabitant);
     }
 

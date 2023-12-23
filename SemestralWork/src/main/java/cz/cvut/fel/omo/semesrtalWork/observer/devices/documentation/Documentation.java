@@ -1,7 +1,6 @@
-package cz.cvut.fel.omo.semesrtalWork.observer.observers.documentation;
+package cz.cvut.fel.omo.semesrtalWork.observer.devices.documentation;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
-import java.util.logging.Logger;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class Documentation {
     private final ADevice device;
