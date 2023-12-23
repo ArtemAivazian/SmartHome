@@ -11,11 +11,11 @@ public class TurnOffMicrowaveCommand implements ICommand{
 
     @Override
     public void execute() {
-        handler.turnOffMicrowave();
+        System.out.println("!!?");
     }
-
     @Override
     public void execute(ADevice device) {
-
+        device.stopUsage();
+        handler.turnOffMicrowave();
     }
 }

@@ -16,6 +16,6 @@ public class TakeSkisCommand implements ICommand {
 
     @Override
     public void execute(ADevice device) {
-
+        System.out.println("!!?");
     }
 }

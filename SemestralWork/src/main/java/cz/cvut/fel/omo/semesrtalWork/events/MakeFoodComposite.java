@@ -21,6 +21,6 @@ public class MakeFoodComposite implements ICommand{
 
     @Override
     public void execute(ADevice device) {
-
+        System.out.println("!!?");
     }
 }

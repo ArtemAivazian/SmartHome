@@ -11,11 +11,12 @@ public class TurnOffCattleCommand implements ICommand{
 
     @Override
     public void execute() {
-        handler.turnOffCattle();
+        System.out.println("!!?");
     }
 
     @Override
     public void execute(ADevice device) {
-
+        device.stopUsage();
+        handler.turnOffCattle();
     }
 }
