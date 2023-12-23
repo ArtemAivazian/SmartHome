@@ -11,7 +11,7 @@ public class TurnOnMicrowaveCommand implements ICommand{
 
     @Override
     public void execute() {
-
+        System.out.println("!!?");
     }
 
     @Override

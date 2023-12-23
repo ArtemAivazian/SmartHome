@@ -114,7 +114,7 @@ public class Main {
         adultRoom.addDevice(cattle);
         adultRoom.addInhabitant(adult);
         adult.setCommand(new TurnOnCattleCommand(eventHandler));
-        adult.executeCommand(cattle);
+        adult.executeCommand();
 
 
 

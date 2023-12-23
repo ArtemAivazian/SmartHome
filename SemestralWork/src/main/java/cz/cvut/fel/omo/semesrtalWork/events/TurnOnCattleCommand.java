@@ -11,7 +11,7 @@ public class TurnOnCattleCommand implements ICommand{
 
     @Override
     public void execute() {
-        handler.turnOnCattle();
+        System.out.println("!!?");
     }
 
     @Override

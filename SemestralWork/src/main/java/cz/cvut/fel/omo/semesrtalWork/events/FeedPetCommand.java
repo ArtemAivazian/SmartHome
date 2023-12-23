@@ -16,6 +16,6 @@ public class FeedPetCommand implements ICommand {
 
     @Override
     public void execute(ADevice device) {
-
+        System.out.println("!!?");
     }
 }
