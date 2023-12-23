@@ -9,7 +9,8 @@ public class SolarPanel extends LightAbstract {
 
     private final Threshold threshold = Threshold.HIGH;
 
-    public SolarPanel(LightASensor lightSensor) {
+    public SolarPanel(LightASensor lightSensor, double electricityConsumption, double functionality) {
+        super(electricityConsumption, 0, 0, functionality);
         this.lightSensor = lightSensor;
     }
 
@@ -21,4 +22,8 @@ public class SolarPanel extends LightAbstract {
             System.out.println("Solar panel has been turned off");
     }
 
+    @Override
+    public void updateState(double elapsedTime) {
+
+    }
 }

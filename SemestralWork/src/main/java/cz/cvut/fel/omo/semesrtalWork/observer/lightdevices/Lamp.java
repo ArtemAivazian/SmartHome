@@ -9,7 +9,8 @@ public class Lamp extends LightAbstract {
 
     private final Threshold threshold = Threshold.LOW;
 
-    public Lamp(LightASensor lightSensor) {
+    public Lamp(LightASensor lightSensor, double electricityConsumption, double functionality) {
+        super(electricityConsumption, 0, 0, functionality);
         this.lightSensor = lightSensor;
     }
 
@@ -21,4 +22,8 @@ public class Lamp extends LightAbstract {
             System.out.println("Lamp has been turned off");
     }
 
+    @Override
+    public void updateState(double elapsedTime) {
+
+    }
 }
