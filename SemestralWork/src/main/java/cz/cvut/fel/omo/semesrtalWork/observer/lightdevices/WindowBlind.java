@@ -8,7 +8,8 @@ public class WindowBlind extends LightAbstract {
     private LightASensor lightSensor;
     private final Threshold threshold = Threshold.MEDIUM;
 
-    public WindowBlind(LightASensor lightSensor) {
+    public WindowBlind(LightASensor lightSensor, double electricityConsumption, double functionality) {
+        super(electricityConsumption, 0, 0, functionality);
         this.lightSensor = lightSensor;
     }
 
@@ -20,4 +21,8 @@ public class WindowBlind extends LightAbstract {
             System.out.println("Window Blind has been up");
     }
 
+    @Override
+    public void updateState(double elapsedTime) {
+
+    }
 }

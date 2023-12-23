@@ -9,7 +9,8 @@ public class Heater extends HeatAbstract {
     private HeatASensor heatSensor;
 
     private final Threshold threshold = Threshold.LOW;
-    public Heater(HeatASensor heatSensor) {
+    public Heater(HeatASensor heatSensor, double electricityConsumption, double functionality) {
+        super(electricityConsumption, 0, 0, functionality);
         this.heatSensor = heatSensor;
     }
 
@@ -21,4 +22,8 @@ public class Heater extends HeatAbstract {
             System.out.println("Heater has been turned off");
     }
 
+    @Override
+    public void updateState(double elapsedTime) {
+
+    }
 }
