@@ -2,7 +2,6 @@ package cz.cvut.fel.omo.semesrtalWork.location.builder;
 
 import cz.cvut.fel.omo.semesrtalWork.location.Floor;
 import cz.cvut.fel.omo.semesrtalWork.location.House;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 
 public class HouseBuilder implements IBuilder{

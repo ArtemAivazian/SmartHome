@@ -1,8 +1,8 @@
-package cz.cvut.fel.omo.semesrtalWork.observer.observers;
+package cz.cvut.fel.omo.semesrtalWork.observer.devices;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.ADeviceState;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.DeviceOffState;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.State;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.ADeviceState;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.DeviceOffState;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
 
 public abstract class ADevice {
     private ADeviceState deviceState;
@@ -24,5 +24,4 @@ public abstract class ADevice {
     public void fix() {
         deviceState.fix();
     }
-    public abstract void update();
 }

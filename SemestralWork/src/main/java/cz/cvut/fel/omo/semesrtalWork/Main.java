@@ -3,15 +3,19 @@ package cz.cvut.fel.omo.semesrtalWork;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Adult;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Child;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
+import cz.cvut.fel.omo.semesrtalWork.events.EventHandler;
+import cz.cvut.fel.omo.semesrtalWork.events.MakeFoodComposite;
+import cz.cvut.fel.omo.semesrtalWork.events.TurnOnCattleCommand;
+import cz.cvut.fel.omo.semesrtalWork.events.TurnOnMicrowaveCommand;
 import cz.cvut.fel.omo.semesrtalWork.item.Bike;
 import cz.cvut.fel.omo.semesrtalWork.location.Floor;
 import cz.cvut.fel.omo.semesrtalWork.location.House;
 import cz.cvut.fel.omo.semesrtalWork.location.Room;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.*;
 import cz.cvut.fel.omo.semesrtalWork.observer.lightdevices.Lamp;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.ADeviceState;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.DeviceBrokenState;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.State;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.DeviceBrokenState;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
+import cz.cvut.fel.omo.semesrtalWork.observer.noSensorDevs.Cattle;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
@@ -70,7 +74,7 @@ public class Main {
         roomBuilder.addDevice(lamp);
         Room childRoom = roomBuilder.getResult();
 
-        childRoom.addInhabitand(new Pet());
+        childRoom.addInhabitant(new Pet());
         roomBuilder.addSensor(new HeatASensor());
         Room adultRoom = roomBuilder.getResult();
 
@@ -89,9 +93,30 @@ public class Main {
 
         childRoom.addSensor(new LightASensor());
         childRoom.addItem(new Bike());
-        childRoom.addInhabitand(new Child());
-        childRoom.addInhabitand(new Adult());
+        Child child1 = new Child();
+        childRoom.addInhabitant(child1);
+        childRoom.addInhabitant(new Adult());
         lamp.changeState(new DeviceBrokenState(lamp, State.BROKEN));
+
+        EventHandler eventHandler = new EventHandler();
+        MakeFoodComposite makeFoodComposite = new MakeFoodComposite();
+        TurnOnCattleCommand turnOnCattleCommand = new TurnOnCattleCommand(eventHandler);
+        TurnOnMicrowaveCommand turnOnMicrowaveCommand = new TurnOnMicrowaveCommand(eventHandler);
+        makeFoodComposite.add(turnOnCattleCommand);
+        makeFoodComposite.add(turnOnMicrowaveCommand);
+        child1.setCommand(makeFoodComposite);
+        child1.executeCommand();
+        child1.executeCommand();
+
+
+        Cattle cattle = new Cattle();
+        Adult adult = new Adult();
+        adultRoom.addDevice(cattle);
+        adultRoom.addInhabitant(adult);
+        adult.setCommand(new TurnOnCattleCommand(eventHandler));
+        adult.executeCommand();
+
+
 
 
 

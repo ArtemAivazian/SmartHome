@@ -2,9 +2,8 @@ package cz.cvut.fel.omo.semesrtalWork.location.builder;
 
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.AInhabitant;
 import cz.cvut.fel.omo.semesrtalWork.item.AItem;
-import cz.cvut.fel.omo.semesrtalWork.location.Floor;
 import cz.cvut.fel.omo.semesrtalWork.location.Room;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 
 public class RoomBuilder implements IBuilder{
@@ -23,7 +22,7 @@ public class RoomBuilder implements IBuilder{
         room.addItem(item);
     }
     public void addInhabitant(AInhabitant inhabitant) {
-        room.addInhabitand(inhabitant);
+        room.addInhabitant(inhabitant);
     }
 
     public void reset() {

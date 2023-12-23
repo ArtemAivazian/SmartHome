@@ -1,15 +1,15 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.subjects;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.HeatAbstract;
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.LightAbstract;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.HeatAbstract;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.LightAbstract;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ASensor {
-    protected long time = 0;
     private List<LightAbstract> lightDevices = new ArrayList<>();
     private List<HeatAbstract> heatDevices = new ArrayList<>();
+
 
     public void addLightDevice(LightAbstract device){
         lightDevices.add(device);
@@ -17,6 +17,7 @@ public abstract class ASensor {
     public void addHeatDevice(HeatAbstract device) {
         heatDevices.add(device);
     }
+
 
     public void notifyHeatDevices() {
         for (var device : heatDevices)
