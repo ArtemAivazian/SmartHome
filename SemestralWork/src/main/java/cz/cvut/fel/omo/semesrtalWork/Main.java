@@ -9,6 +9,9 @@ import cz.cvut.fel.omo.semesrtalWork.location.House;
 import cz.cvut.fel.omo.semesrtalWork.location.Room;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.*;
 import cz.cvut.fel.omo.semesrtalWork.observer.lightdevices.Lamp;
+import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.ADeviceState;
+import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.DeviceBrokenState;
+import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.State;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
@@ -88,6 +91,7 @@ public class Main {
         childRoom.addItem(new Bike());
         childRoom.addInhabitand(new Child());
         childRoom.addInhabitand(new Adult());
+        lamp.changeState(new DeviceBrokenState(lamp, State.BROKEN));
 
 
 

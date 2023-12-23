@@ -2,24 +2,18 @@ package cz.cvut.fel.omo.semesrtalWork.observer.observers;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.ADeviceState;
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.DeviceOffState;
+import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.State;
 
 public abstract class ADevice {
     private ADeviceState deviceState;
 
-    public ADevice(ADevice deviceState) {
-         this.deviceState = new DeviceOffState(this);
+    public ADevice() {
+         this.deviceState = new DeviceOffState(this, State.OFF);
     }
     public void changeState (ADeviceState state){
         deviceState = state;
     }
 
-    public void plugIn() {
-        deviceState.plugIn();
-    }
-
-    public void plugOut() {
-        deviceState.plugOut();
-    }
 
     public void use() {
         deviceState.use();

@@ -25,6 +25,7 @@ public class DeviceBrokenState extends ADeviceState{
 
     @Override
     public void stopFix() {
+        System.out.println("???");
     }
 
     @Override
