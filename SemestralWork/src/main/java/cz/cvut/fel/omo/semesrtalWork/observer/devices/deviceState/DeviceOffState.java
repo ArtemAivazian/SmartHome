@@ -1,16 +1,15 @@
-package cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState;
+package cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
-public class DeviceBrokenState extends ADeviceState{
-
-    public DeviceBrokenState(ADevice device, State state) {
+public class DeviceOffState extends ADeviceState{
+    public DeviceOffState(ADevice device, State state) {
         super(device, state);
     }
 
     @Override
     public void use() {
-        System.out.println("Device is already broken");
+        device.changeState(new DeviceUsingState(device, State.USING));
     }
 
     @Override
@@ -20,7 +19,7 @@ public class DeviceBrokenState extends ADeviceState{
 
     @Override
     public void fix() {
-        device.changeState(new DeviceFixingState(device, State.FIXING));
+        System.out.println("???");
     }
 
     @Override

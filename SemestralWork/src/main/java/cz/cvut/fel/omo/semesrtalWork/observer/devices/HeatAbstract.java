@@ -1,7 +1,6 @@
-package cz.cvut.fel.omo.semesrtalWork.observer.observers;
+package cz.cvut.fel.omo.semesrtalWork.observer.devices;
 
 public abstract class HeatAbstract extends ADevice {
-    @Override
     public void update() {
         execute();
     }

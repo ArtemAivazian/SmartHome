@@ -1,4 +1,4 @@
-package cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState;
+package cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState;
 
 public enum State {
     USING,

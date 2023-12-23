@@ -15,4 +15,13 @@ public class EventHandler {
     public void turnOnMicrowave() {
         System.out.println("TurnOnMicrowave");
     }
+    public void turnOffMicrowave() {
+        System.out.println("TurnOffMicrowave");
+    }
+
+    public void turnOffCattle() {
+        System.out.println("TurnOffCattle");
+    }
+
+
 }
