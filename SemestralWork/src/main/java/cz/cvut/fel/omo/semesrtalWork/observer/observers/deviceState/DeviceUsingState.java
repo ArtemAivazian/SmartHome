@@ -9,7 +9,7 @@ public class DeviceUsingState extends ADeviceState{
 
     @Override
     public void use() {
-
+        System.out.println("???");
     }
 
     @Override
@@ -19,12 +19,12 @@ public class DeviceUsingState extends ADeviceState{
 
     @Override
     public void fix() {
-
+        System.out.println("???");
     }
 
     @Override
     public void stopFix() {
-
+        System.out.println("???");
     }
 
     @Override

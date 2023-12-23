@@ -24,7 +24,7 @@ public class DeviceOffState extends ADeviceState{
 
     @Override
     public void stopFix() {
-
+        System.out.println("???");
     }
 
     @Override

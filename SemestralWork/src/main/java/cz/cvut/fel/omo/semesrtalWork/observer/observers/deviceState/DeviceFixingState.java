@@ -10,17 +10,17 @@ public class DeviceFixingState extends ADeviceState{
 
     @Override
     public void use() {
-
+        System.out.println("???");
     }
 
     @Override
     public void stopUsage() {
-
+        System.out.println("???");
     }
 
     @Override
     public void fix() {
-
+        System.out.println("???");
     }
 
     @Override

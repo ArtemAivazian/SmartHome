@@ -1,12 +1,15 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.heatdevices;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
+import cz.cvut.fel.omo.semesrtalWork.observer.observers.ADevice;
 import cz.cvut.fel.omo.semesrtalWork.observer.observers.HeatAbstract;
+import cz.cvut.fel.omo.semesrtalWork.observer.observers.deviceState.State;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
 
 public class Heater extends HeatAbstract {
 
     private HeatASensor heatSensor;
+
     private final Threshold threshold = Threshold.LOW;
     public Heater(HeatASensor heatSensor) {
         this.heatSensor = heatSensor;
