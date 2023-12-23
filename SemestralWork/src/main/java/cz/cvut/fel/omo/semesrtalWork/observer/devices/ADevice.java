@@ -5,7 +5,17 @@ import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.DeviceOffState
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
 
 public abstract class ADevice {
-    private ADeviceState deviceState;
+    protected ADeviceState deviceState;
+    protected String name;
+    protected  double usageTime = 0;
+    protected double totalWaterConsumption = 0;
+    protected double totalElectricityConsumption = 0;
+    protected double totalGasConsumption = 0;
+    protected double waterConsuming = 0;
+    protected double electricityConsumption = 0;
+    protected double gasConsuming = 0;
+    protected double fixingTime = 0;
+
 
     public ADevice() {
          this.deviceState = new DeviceOffState(this, State.OFF);
