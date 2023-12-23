@@ -1,5 +1,7 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
+
 public class FeedPetCommand implements ICommand {
     private EventHandler handler;
 
@@ -10,5 +12,10 @@ public class FeedPetCommand implements ICommand {
     @Override
     public void execute() {
         handler.feedPet();
+    }
+
+    @Override
+    public void execute(ADevice device) {
+
     }
 }

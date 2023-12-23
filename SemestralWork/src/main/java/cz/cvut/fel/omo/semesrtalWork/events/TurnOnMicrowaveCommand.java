@@ -1,5 +1,7 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
+
 public class TurnOnMicrowaveCommand implements ICommand{
     private EventHandler handler;
 
@@ -9,6 +11,12 @@ public class TurnOnMicrowaveCommand implements ICommand{
 
     @Override
     public void execute() {
+
+    }
+
+    @Override
+    public void execute(ADevice device) {
+        device.use();
         handler.turnOnMicrowave();
     }
 }

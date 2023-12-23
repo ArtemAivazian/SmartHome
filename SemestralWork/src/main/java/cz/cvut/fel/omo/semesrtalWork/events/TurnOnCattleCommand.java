@@ -13,4 +13,10 @@ public class TurnOnCattleCommand implements ICommand{
     public void execute() {
         handler.turnOnCattle();
     }
+
+    @Override
+    public void execute(ADevice device) {
+        device.use();
+        handler.turnOnCattle();
+    }
 }
