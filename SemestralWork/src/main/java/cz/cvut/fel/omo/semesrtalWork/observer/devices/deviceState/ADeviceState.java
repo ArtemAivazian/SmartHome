@@ -17,4 +17,7 @@ public abstract class ADeviceState {
     public abstract void stopFix();
     public abstract void broke();
 
+    public State getState() {
+        return state;
+    }
 }

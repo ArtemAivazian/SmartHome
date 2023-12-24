@@ -2,6 +2,7 @@ package cz.cvut.fel.omo.semesrtalWork.observer.heatdevices;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.HeatAbstract;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
 
 public class Heater extends HeatAbstract {
@@ -9,8 +10,7 @@ public class Heater extends HeatAbstract {
     private HeatASensor heatSensor;
 
     private final Threshold threshold = Threshold.LOW;
-    public Heater(HeatASensor heatSensor, double electricityConsumption, double functionality) {
-        super(electricityConsumption, 0, 0, functionality);
+    public Heater(HeatASensor heatSensor) {
         this.heatSensor = heatSensor;
     }
 
@@ -24,6 +24,9 @@ public class Heater extends HeatAbstract {
 
     @Override
     public void updateState(double elapsedTime) {
-
+        if (deviceState.getState() == State.USING) {
+            functionality -= 2;
+            electricityConsumption += 10;
+        }
     }
 }
