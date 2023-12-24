@@ -14,6 +14,7 @@ import cz.cvut.fel.omo.semesrtalWork.location.Room;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.FloorBuilder;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.HouseBuilder;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.RoomBuilder;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.DeviceBrokenState;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
 import cz.cvut.fel.omo.semesrtalWork.observer.lightdevices.Lamp;
@@ -125,20 +126,20 @@ public class SimulationA extends SimulationFactory{
         // Initialize simulation state
         elapsedTime = 0;
         // Start the simulation
-        startSimulation();
+        startSimulation(house);
     }
 
-    private void startSimulation() {
+    private void startSimulation(House house) {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                updateDevicesState();
+                updateDevicesState(house);
                 elapsedTime += 1; // Předpokládáme, že simulace běží v časovém kroku jedné sekundy
             }
         }, 0, 1000);// Spustit úlohu každou sekundu
     }
 
-    private void updateDevicesState() {
+    private void updateDevicesState(House house) {
         // Iterate over each room in the house
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
@@ -148,14 +149,14 @@ public class SimulationA extends SimulationFactory{
 //                }
 
                 // Update devices in the room
-                for (ADevice device : room.getDevices()) {
+                for (ADevice device : room.getDevicesInRoom()) {
                     device.updateState(elapsedTime);
                 }
 
                 // Update inhabitants in the room
-                for (AInhabitant inhabitant : room.getInhabitants()) {
-
-                }
+//                for (AInhabitant inhabitant : room.getInhabitants()) {
+//
+//                }
             }
         }
     }

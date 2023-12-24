@@ -27,7 +27,7 @@ public class Room {
         inhabitantsInRoom.add(inhabitant);
     }
 
-
-
-
+    public List<ADevice> getDevicesInRoom() {
+        return devicesInRoom;
+    }
 }
