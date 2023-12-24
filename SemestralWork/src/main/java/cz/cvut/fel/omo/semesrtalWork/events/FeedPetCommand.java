@@ -28,7 +28,7 @@ public class FeedPetCommand implements ICommand {
     }
     @Override
     public void execute(Pet pet) {
-        pet.feed();
+
         handler.feedPet();
     }
 }
