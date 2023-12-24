@@ -1,5 +1,6 @@
 package cz.cvut.fel.omo.semesrtalWork.simulation;
 
+import cz.cvut.fel.omo.semesrtalWork.Inhabitans.AInhabitant;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Adult;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Child;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
@@ -16,6 +17,7 @@ import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.DeviceBrokenSt
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
 import cz.cvut.fel.omo.semesrtalWork.observer.lightdevices.Lamp;
 import cz.cvut.fel.omo.semesrtalWork.observer.noSensorDevs.Cattle;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
@@ -125,6 +127,10 @@ public class SimulationA extends SimulationFactory{
         Bike bike = new Bike();
         adult.setCommand(new TakeBikeCommand(eventHandler));
         adult.executeCommand(bike);
+
+        Pet cat = new Pet();
+        adult.setCommand(new FeedPetCommand(eventHandler));
+        adult.executeCommand(cat);
         // Initialize simulation state
         elapsedTime = 0;
         // Start the simulation
@@ -135,6 +141,7 @@ public class SimulationA extends SimulationFactory{
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+
                 updateDevicesState(house);
                 elapsedTime += 1; // Předpokládáme, že simulace běží v časovém kroku jedné sekundy
             }
@@ -146,9 +153,9 @@ public class SimulationA extends SimulationFactory{
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
                 // Update sensors in the room
-//                for (Sensor sensor : room.getSensors()) {
-//                    sensor.updateState(elapsedTime);
-//                }
+                for (ASensor sensor : room.getSensorsInRoom()) {
+                    sensor.updateState(elapsedTime);
+                }
 
                 // Update devices in the room
                 for (ADevice device : room.getDevicesInRoom()) {
@@ -156,9 +163,9 @@ public class SimulationA extends SimulationFactory{
                 }
 
                 // Update inhabitants in the room
-//                for (AInhabitant inhabitant : room.getInhabitants()) {
-//
-//                }
+                for (AInhabitant inhabitant : room.getInhabitantsInRoom()) {
+                    inhabitant.updateState(elapsedTime);
+                }
             }
         }
     }

@@ -30,4 +30,16 @@ public class Room {
     public List<ADevice> getDevicesInRoom() {
         return devicesInRoom;
     }
+
+    public List<ASensor> getSensorsInRoom() {
+        return sensorsInRoom;
+    }
+
+    public List<AInhabitant> getInhabitantsInRoom() {
+        return inhabitantsInRoom;
+    }
+
+    public List<AItem> getItemsInRoom() {
+        return itemsInRoom;
+    }
 }
