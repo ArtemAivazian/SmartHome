@@ -17,4 +17,8 @@ public class Floor {
     public void addSensor(ASensor sensor) {
         sensorsOnFloor.add(sensor);
     }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
 }
