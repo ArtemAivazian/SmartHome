@@ -1,5 +1,6 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
+import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class FeedPetCommand implements ICommand {
@@ -17,5 +18,10 @@ public class FeedPetCommand implements ICommand {
     @Override
     public void execute(ADevice device) {
         System.out.println("!!?");
+    }
+
+    @Override
+    public void execute(AItem item) {
+
     }
 }

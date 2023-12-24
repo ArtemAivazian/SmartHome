@@ -24,4 +24,7 @@ public class EventHandler {
     }
 
 
+    public void takeBike() {
+        System.out.println("takeBike");
+    }
 }

@@ -1,5 +1,6 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
+import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class TurnOffCattleCommand implements ICommand{
@@ -18,5 +19,10 @@ public class TurnOffCattleCommand implements ICommand{
     public void execute(ADevice device) {
         device.stopUsage();
         handler.turnOffCattle();
+    }
+
+    @Override
+    public void execute(AItem item) {
+
     }
 }
