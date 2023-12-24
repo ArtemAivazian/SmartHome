@@ -3,10 +3,7 @@ package cz.cvut.fel.omo.semesrtalWork.simulation;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Adult;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Child;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
-import cz.cvut.fel.omo.semesrtalWork.events.EventHandler;
-import cz.cvut.fel.omo.semesrtalWork.events.MakeFoodComposite;
-import cz.cvut.fel.omo.semesrtalWork.events.TurnOnCattleCommand;
-import cz.cvut.fel.omo.semesrtalWork.events.TurnOnMicrowaveCommand;
+import cz.cvut.fel.omo.semesrtalWork.events.*;
 import cz.cvut.fel.omo.semesrtalWork.item.Bike;
 import cz.cvut.fel.omo.semesrtalWork.location.Floor;
 import cz.cvut.fel.omo.semesrtalWork.location.House;
@@ -123,6 +120,11 @@ public class SimulationA extends SimulationFactory{
         adult.setCommand(new TurnOnCattleCommand(eventHandler));
         adult.executeCommand();
 
+
+
+        Bike bike = new Bike();
+        adult.setCommand(new TakeBikeCommand(eventHandler));
+        adult.executeCommand(bike);
         // Initialize simulation state
         elapsedTime = 0;
         // Start the simulation

@@ -1,6 +1,7 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
 
+import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 import java.util.ArrayList;
@@ -22,5 +23,10 @@ public class MakeFoodComposite implements ICommand{
     @Override
     public void execute(ADevice device) {
         System.out.println("!!?");
+    }
+
+    @Override
+    public void execute(AItem item) {
+
     }
 }
