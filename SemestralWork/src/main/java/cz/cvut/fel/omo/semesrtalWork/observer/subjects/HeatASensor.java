@@ -13,7 +13,8 @@ public class HeatASensor extends ASensor {
     }
 
     @Override
-    public void build() {
-        System.out.println("Create HeatSensor");
+    public void updateState(double elapsedTime) {
+        functionality -= 0.0000001;
+        electricityConsumption += 0.1;
     }
 }

@@ -3,23 +3,18 @@ package cz.cvut.fel.omo.semesrtalWork.observer.devices;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.ADeviceState;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.DeviceOffState;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
-import cz.cvut.fel.omo.semesrtalWork.simulation.DeviceDataCollector;
+import cz.cvut.fel.omo.semesrtalWork.simulation.DataCollector;
 
-public abstract class ADevice implements DeviceDataCollector {
+public abstract class ADevice implements DataCollector {
     protected ADeviceState deviceState;
-    protected double electricityConsumption;
-    protected double gasConsumption;
-    protected double waterConsumption;
-    protected double functionality; // Procentuální hodnota od 0 do 100
+    protected double electricityConsumption = 0;
+    protected double gasConsumption = 0;
+    protected double waterConsumption = 0;
+    protected double functionality = 100; // Procentuální hodnota od 0 do 100
 
 
-    public ADevice(double electricityConsumption, double gasConsumption, double waterConsumption, double functionality) {
+    public ADevice() {
          this.deviceState = new DeviceOffState(this, State.OFF);
-
-        this.electricityConsumption = electricityConsumption;
-        this.gasConsumption = gasConsumption;
-        this.waterConsumption = waterConsumption;
-        this.functionality = functionality;
     }
     public void changeState (ADeviceState state){
         deviceState = state;
