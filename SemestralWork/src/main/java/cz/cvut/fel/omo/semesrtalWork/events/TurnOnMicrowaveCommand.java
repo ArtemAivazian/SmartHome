@@ -4,7 +4,7 @@ import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
 import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
-public class TurnOnMicrowaveCommand implements ICommand{
+public class TurnOnMicrowaveCommand implements ICommand {
     private EventHandler handler;
 
     public TurnOnMicrowaveCommand(EventHandler handler) {
@@ -13,7 +13,7 @@ public class TurnOnMicrowaveCommand implements ICommand{
 
     @Override
     public void execute() {
-        System.out.println("!!?");
+        System.out.println("????");
     }
 
     @Override
@@ -21,6 +21,7 @@ public class TurnOnMicrowaveCommand implements ICommand{
         device.use();
         handler.turnOnMicrowave();
     }
+
 
     @Override
     public void execute(AItem item) {

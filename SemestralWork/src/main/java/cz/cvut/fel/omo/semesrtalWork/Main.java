@@ -4,7 +4,6 @@ import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Adult;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Child;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
 import cz.cvut.fel.omo.semesrtalWork.events.EventHandler;
-import cz.cvut.fel.omo.semesrtalWork.events.MakeFoodComposite;
 import cz.cvut.fel.omo.semesrtalWork.events.TurnOnCattleCommand;
 import cz.cvut.fel.omo.semesrtalWork.events.TurnOnMicrowaveCommand;
 import cz.cvut.fel.omo.semesrtalWork.item.Bike;

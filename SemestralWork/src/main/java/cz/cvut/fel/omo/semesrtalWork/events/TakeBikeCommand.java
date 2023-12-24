@@ -4,7 +4,7 @@ import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
 import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
-public class TakeBikeCommand implements ICommand{
+public class TakeBikeCommand implements ICommand {
     private EventHandler handler;
     public TakeBikeCommand(EventHandler handler) {
         this.handler = handler;
@@ -21,7 +21,7 @@ public class TakeBikeCommand implements ICommand{
 
     @Override
     public void execute(AItem item) {
-        if (!item.isUsing()){
+        if (item.isFree()){
             item.use();
             handler.takeSkies();
         } else {

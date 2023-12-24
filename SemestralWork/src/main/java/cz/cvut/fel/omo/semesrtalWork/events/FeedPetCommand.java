@@ -1,6 +1,5 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
-import cz.cvut.fel.omo.semesrtalWork.Inhabitans.AInhabitant;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
 import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
@@ -28,7 +27,8 @@ public class FeedPetCommand implements ICommand {
     }
     @Override
     public void execute(Pet pet) {
-
+        pet.setFullness(100);
+        pet.setHungry(false);
         handler.feedPet();
     }
 }

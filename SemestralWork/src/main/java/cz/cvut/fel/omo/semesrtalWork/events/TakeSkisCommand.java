@@ -23,7 +23,7 @@ public class TakeSkisCommand implements ICommand {
 
     @Override
     public void execute(AItem item) {
-        if (!item.isUsing()){
+        if (item.isFree()){
             item.use();
             handler.takeSkies();
         } else {
