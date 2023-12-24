@@ -1,10 +1,8 @@
 package cz.cvut.fel.omo.semesrtalWork.simulation;
 
-import cz.cvut.fel.omo.semesrtalWork.Inhabitans.AInhabitant;
-import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Adult;
-import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Child;
-import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
+import cz.cvut.fel.omo.semesrtalWork.Inhabitans.*;
 import cz.cvut.fel.omo.semesrtalWork.events.*;
+import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.item.Bike;
 import cz.cvut.fel.omo.semesrtalWork.location.Floor;
 import cz.cvut.fel.omo.semesrtalWork.location.House;
@@ -134,21 +132,31 @@ public class SimulationA extends SimulationFactory{
         // Initialize simulation state
         elapsedTime = 0;
         // Start the simulation
-        startSimulation(house);
+        run(house);
     }
 
-    private void startSimulation(House house) {
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
 
-                updateDevicesState(house);
-                elapsedTime += 1; // Předpokládáme, že simulace běží v časovém kroku jedné sekundy
+
+    public void run(House house){
+
+        double fps = 1000;
+        long startTime = System.currentTimeMillis();
+        long passedTime;
+
+        while (true){
+            passedTime = System.currentTimeMillis();
+            if (passedTime- startTime > fps){
+                elapsedTime++;
+                updateHouseState(house);
+                startTime = passedTime;
             }
-        }, 0, 1000);// Spustit úlohu každou sekundu
+        }
     }
 
-    private void updateDevicesState(House house) {
+    private void checkRapidActionCondition(House house){
+
+    }
+    private void updateHouseState(House house) {
         // Iterate over each room in the house
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
@@ -168,6 +176,11 @@ public class SimulationA extends SimulationFactory{
                 }
             }
         }
+    }
+
+
+    private void check(AInhabitant inhabitant){
+
     }
 
 }
