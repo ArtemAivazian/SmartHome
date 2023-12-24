@@ -1,14 +1,8 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
+
 public class EventHandler {
-    public void feedPet() {
-        System.out.println("Feeding pet");
-    }
-
-    public void takeSkies() {
-        System.out.println("Skis have been taken");
-    }
-
     public void turnOnCattle() {
         System.out.println("TurnOnCattle");
     }
@@ -23,8 +17,15 @@ public class EventHandler {
         System.out.println("TurnOffCattle");
     }
 
+    public void takeSkies() {
+        System.out.println("Skis are taken");
+    }
 
-    public void takeBike() {
-        System.out.println("takeBike");
+    public void feedPet() {
+        System.out.println("Feeding pet");
+    }
+
+    public void eatFood() {
+        System.out.println("Person is eating food");
     }
 }

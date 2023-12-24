@@ -19,11 +19,11 @@ import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SimulationA extends SimulationFactory{
-
     @Override
     public void create() {
         //      //Create sensors
@@ -78,7 +78,6 @@ public class SimulationA extends SimulationFactory{
         roomBuilder.addDevice(lamp);
         Room childRoom = roomBuilder.getResult();
 
-        childRoom.addInhabitant(new Pet());
         roomBuilder.addSensor(new HeatASensor());
         Room adultRoom = roomBuilder.getResult();
 
@@ -96,39 +95,25 @@ public class SimulationA extends SimulationFactory{
 
 
         childRoom.addSensor(new LightASensor());
-        childRoom.addItem(new Bike());
-        Child child1 = new Child();
-        childRoom.addInhabitant(child1);
-        childRoom.addInhabitant(new Adult());
         lamp.changeState(new DeviceBrokenState(lamp, State.BROKEN));
-
-        EventHandler eventHandler = new EventHandler();
-        MakeFoodComposite makeFoodComposite = new MakeFoodComposite();
-        TurnOnCattleCommand turnOnCattleCommand = new TurnOnCattleCommand(eventHandler);
-        TurnOnMicrowaveCommand turnOnMicrowaveCommand = new TurnOnMicrowaveCommand(eventHandler);
-        makeFoodComposite.add(turnOnCattleCommand);
-        makeFoodComposite.add(turnOnMicrowaveCommand);
-        child1.setCommand(makeFoodComposite);
-        child1.executeCommand();
-        child1.executeCommand();//error
-
 
         Cattle cattle = new Cattle();
         Adult adult = new Adult();
         adultRoom.addDevice(cattle);
-        adultRoom.addInhabitant(adult);
-        adult.setCommand(new TurnOnCattleCommand(eventHandler));
-        adult.executeCommand();
+        adultRoom.addPerson(adult);
+
+
 
 
 
         Bike bike = new Bike();
-        adult.setCommand(new TakeBikeCommand(eventHandler));
-        adult.executeCommand(bike);
+
 
         Pet cat = new Pet();
-        adult.setCommand(new FeedPetCommand(eventHandler));
-        adult.executeCommand(cat);
+        adultRoom.addPet(cat);
+
+
+
         // Initialize simulation state
         elapsedTime = 0;
         // Start the simulation
@@ -153,10 +138,8 @@ public class SimulationA extends SimulationFactory{
         }
     }
 
-    private void checkRapidActionCondition(House house){
-
-    }
     private void updateHouseState(House house) {
+        System.out.println(elapsedTime);
         // Iterate over each room in the house
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
@@ -171,16 +154,26 @@ public class SimulationA extends SimulationFactory{
                 }
 
                 // Update inhabitants in the room
-                for (AInhabitant inhabitant : room.getInhabitantsInRoom()) {
+                for (Person inhabitant : room.getPeopleInRoom()) {
                     inhabitant.updateState(elapsedTime);
+                    check(inhabitant);
+                }
+                for (Pet pet : room.getPetInRoom()) {
+                    pet.updateState(elapsedTime);
                 }
             }
         }
     }
 
 
-    private void check(AInhabitant inhabitant){
+    private void check(Person person){
+        if (person.isFree()){
+            if (person.isHungry()){
+                person.setCommand(new MakeFoodCommand(eventHandler, person));
+                person.executeCommand();
+            }
 
+        }
     }
 
 }

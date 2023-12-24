@@ -4,7 +4,7 @@ import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
 import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
-public class TurnOffMicrowaveCommand implements ICommand{
+public class TurnOffMicrowaveCommand implements ICommand {
     private EventHandler handler;
 
     public TurnOffMicrowaveCommand(EventHandler handler) {
