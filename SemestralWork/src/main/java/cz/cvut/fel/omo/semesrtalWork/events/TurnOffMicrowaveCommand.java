@@ -5,29 +5,15 @@ import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class TurnOffMicrowaveCommand implements ICommand {
-    private EventHandler handler;
+    private CommandParameters parameters;
 
-    public TurnOffMicrowaveCommand(EventHandler handler) {
-        this.handler = handler;
+    public TurnOffMicrowaveCommand(CommandParameters parameters) {
+        this.parameters = parameters;
     }
 
     @Override
     public void execute() {
-        System.out.println("!!?");
-    }
-    @Override
-    public void execute(ADevice device) {
-        device.stopUsage();
-        handler.turnOffMicrowave();
-    }
-
-    @Override
-    public void execute(AItem item) {
-
-    }
-
-    @Override
-    public void execute(Pet pet) {
-
+        parameters.getDevice().stopUsage();
+        parameters.getHandler().turnOffMicrowave();
     }
 }

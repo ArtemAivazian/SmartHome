@@ -9,8 +9,6 @@ public abstract class SimulationFactory {
     protected Timer timer;
     protected double elapsedTime;
 
-    protected EventHandler eventHandler = new EventHandler();
-
     public SimulationFactory() {
         this.timer = new Timer();
         this.elapsedTime = 0;

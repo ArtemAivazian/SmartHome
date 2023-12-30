@@ -32,23 +32,6 @@ public class Person extends AAction {
         command = null;
     }
 
-    public void executeCommand(ADevice device) {
-        if (command != null)
-            command.execute(device);
-        command = null;
-    }
-
-
-    public void executeCommand(AItem item) {
-        if (command != null)
-            command.execute(item);
-        command = null;
-    }
-    public void executeCommand(Pet pet) {
-        if (command != null)
-            command.execute(pet);
-        command = null;
-    }
     public void updateState(double elapsedTime) {
         if (!isFree){
             actionTime--;

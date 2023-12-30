@@ -1,8 +1,10 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
+import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class EventHandler {
+
     public void turnOnCattle() {
         System.out.println("TurnOnCattle");
     }
@@ -27,5 +29,17 @@ public class EventHandler {
 
     public void eatFood() {
         System.out.println("Person is eating food");
+    }
+
+    public void takeBike() {
+        System.out.println("Bike is taken");
+    }
+
+    public void warmUpFood() {
+        System.out.println("Warming up food");
+    }
+
+    public void makeTea() {
+        System.out.println("Make tea");
     }
 }

@@ -5,30 +5,16 @@ import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class FeedPetCommand implements ICommand {
-    private EventHandler handler;
+    private CommandParameters parameters;
 
-    public FeedPetCommand(EventHandler handler) {
-        this.handler = handler;
+    public FeedPetCommand(CommandParameters parameters) {
+        this.parameters = parameters;
     }
 
     @Override
     public void execute() {
-
-    }
-
-    @Override
-    public void execute(ADevice device) {
-        System.out.println("!!?");
-    }
-
-    @Override
-    public void execute(AItem item) {
-
-    }
-    @Override
-    public void execute(Pet pet) {
-        pet.setFullness(100);
-        pet.setHungry(false);
-        handler.feedPet();
+        parameters.getPet().setFullness(100);
+        parameters.getPet().setHungry(false);
+        parameters.getHandler().feedPet();
     }
 }
