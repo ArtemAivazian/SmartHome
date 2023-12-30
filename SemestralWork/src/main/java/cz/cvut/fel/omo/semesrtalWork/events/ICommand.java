@@ -8,8 +8,8 @@ public interface ICommand {
 
    void execute();
 
-   void execute(ADevice device);
-   void execute(AItem item);
-   void execute(Pet pet);
+//   void execute(ADevice device);
+//   void execute(AItem item);
+//   void execute(Pet pet);
 
 }

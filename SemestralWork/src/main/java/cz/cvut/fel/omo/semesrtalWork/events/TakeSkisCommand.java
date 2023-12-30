@@ -5,34 +5,17 @@ import cz.cvut.fel.omo.semesrtalWork.item.AItem;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class TakeSkisCommand implements ICommand {
-    private EventHandler handler;
+    private CommandParameters parameters;
 
-    public TakeSkisCommand(EventHandler handler) {
-        this.handler = handler;
+    public TakeSkisCommand(CommandParameters parameters) {
+        this.parameters = parameters;
     }
 
     @Override
     public void execute() {
-
-    }
-
-    @Override
-    public void execute(ADevice device) {
-        System.out.println("!!?");
-    }
-
-    @Override
-    public void execute(AItem item) {
-        if (item.isFree()){
-            item.use();
-            handler.takeSkies();
-        } else {
-            System.out.println("BahuY");
+        if (parameters.getItem().isFree()){
+            parameters.getItem().use();
+            parameters.getHandler().takeSkies();
         }
-    }
-
-    @Override
-    public void execute(Pet pet) {
-
     }
 }

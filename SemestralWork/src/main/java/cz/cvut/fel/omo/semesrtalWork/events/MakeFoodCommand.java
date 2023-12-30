@@ -10,34 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MakeFoodCommand implements ICommand {
-    private EventHandler handler;
-    private Person person;
+    private CommandParameters parameters;
 
-    public MakeFoodCommand(EventHandler handler, Person person) {
-        this.handler = handler;
-        this.person = person;
+    public MakeFoodCommand(CommandParameters parameters) {
+        this.parameters = parameters;
     }
 
+    private List<ICommand> commands = new ArrayList<>();
+    public void add(ICommand command){
+        commands.add(command);
+    }
     @Override
     public void execute() {
-        person.setHungry(false);
-        person.setFullness(100);
-        person.setActionTime(2);
-        person.setFree(false);
-        handler.eatFood();
-    }
-
-    @Override
-    public void execute(ADevice device) {
-        System.out.println("!!?");
-    }
-
-    @Override
-    public void execute(AItem item) {
+        parameters.getPerson().setHungry(false);
+        parameters.getPerson().setFullness(100);
+        parameters.getPerson().setActionTime(2);
+        parameters.getPerson().setFree(false);
+        for (var command : commands) {
+            command.execute();
+        }
+        parameters.getHandler().eatFood();
 
     }
-    @Override
-    public void execute(Pet pet) {
 
-    }
 }
