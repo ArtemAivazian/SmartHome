@@ -1,23 +1,16 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
 
-import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Person;
-import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
-import cz.cvut.fel.omo.semesrtalWork.item.AItem;
-import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MakeFoodCommand implements ICommand {
-    private CommandParameters parameters;
+public class MakeBreakfastCommand extends ACommand {
+    private List<ACommand> commands = new ArrayList<>();
 
-    public MakeFoodCommand(CommandParameters parameters) {
-        this.parameters = parameters;
+    public MakeBreakfastCommand(CommandParameters parameters) {
+        super(parameters);
     }
-
-    private List<ICommand> commands = new ArrayList<>();
-    public void add(ICommand command){
+    public void add(ACommand command){
         commands.add(command);
     }
     @Override

@@ -1,6 +1,6 @@
 package cz.cvut.fel.omo.semesrtalWork.item;
 
-public class Bike extends AItem{
+public class Bike extends Item {
 
     public Bike() {
         actionTime = 8;

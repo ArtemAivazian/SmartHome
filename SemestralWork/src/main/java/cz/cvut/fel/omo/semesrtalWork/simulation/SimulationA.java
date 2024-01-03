@@ -2,8 +2,7 @@ package cz.cvut.fel.omo.semesrtalWork.simulation;
 
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.*;
 import cz.cvut.fel.omo.semesrtalWork.events.*;
-import cz.cvut.fel.omo.semesrtalWork.item.AItem;
-import cz.cvut.fel.omo.semesrtalWork.item.Bike;
+import cz.cvut.fel.omo.semesrtalWork.item.Item;
 import cz.cvut.fel.omo.semesrtalWork.item.Skis;
 import cz.cvut.fel.omo.semesrtalWork.location.Floor;
 import cz.cvut.fel.omo.semesrtalWork.location.House;
@@ -12,22 +11,11 @@ import cz.cvut.fel.omo.semesrtalWork.location.builder.FloorBuilder;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.HouseBuilder;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.RoomBuilder;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
-import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.DeviceBrokenState;
-import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
-import cz.cvut.fel.omo.semesrtalWork.observer.lightdevices.Lamp;
 import cz.cvut.fel.omo.semesrtalWork.observer.noSensorDevs.Cattle;
 import cz.cvut.fel.omo.semesrtalWork.observer.noSensorDevs.Microwave;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatASensor;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
-
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class SimulationA extends SimulationFactory{
-    protected EventHandler eventHandler = new EventHandler();
-    private CommandParameters commandParameters;
     @Override
     public void create() {
         //      //Create sensors
@@ -158,7 +146,7 @@ public class SimulationA extends SimulationFactory{
     private Skis findFreeSkis(House house)  {
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
-                for (AItem item : room.getItemsInRoom()) {
+                for (Item item : room.getItemsInRoom()) {
                     if (item instanceof Skis && item.isFree) {
                         return (Skis) item;
                     }
@@ -193,8 +181,8 @@ public class SimulationA extends SimulationFactory{
                 }
 
                 // Update devices in the room
-                for (ADevice device : room.getDevicesInRoom()) {
-                    device.updateState(elapsedTime);
+                for (ADevice ADevice : room.getDevicesInRoom()) {
+                    ADevice.updateState(elapsedTime);
                 }
 
                 // Update inhabitants in the room
@@ -214,17 +202,17 @@ public class SimulationA extends SimulationFactory{
         if (person.isFree()){
             if (person.isHungry()){
                 commandParameters = new CommandParameters(eventHandler, person);
-                MakeFoodCommand makeFoodCommand = new MakeFoodCommand(commandParameters);
+                MakeBreakfastCommand makeBreakfastCommand = new MakeBreakfastCommand(commandParameters);
                 Cattle cattle = findFreeCattle(house);
                 Microwave microwave = findFreeMicrowave(house);
                 commandParameters = new CommandParameters(eventHandler, cattle);
-                makeFoodCommand.add(new TurnOnCattleCommand(commandParameters));
-                makeFoodCommand.add(new MakeTeaCommand(commandParameters));
+                makeBreakfastCommand.add(new TurnOnCattleCommand(commandParameters));
+                makeBreakfastCommand.add(new MakeTeaCommand(commandParameters));
                 commandParameters = new CommandParameters(eventHandler, microwave);
-                makeFoodCommand.add(new TurnOnMicrowaveCommand(commandParameters));
-                makeFoodCommand.add(new WarmUpFoodCommand(commandParameters));
+                makeBreakfastCommand.add(new TurnOnMicrowaveCommand(commandParameters));
+                makeBreakfastCommand.add(new WarmUpFoodCommand(commandParameters));
                 //TO-DO add off cattle and off microwave
-                person.setCommand(makeFoodCommand);
+                person.setCommand(makeBreakfastCommand);
                 person.executeCommand();
             }
 
@@ -234,9 +222,9 @@ public class SimulationA extends SimulationFactory{
     private Microwave findFreeMicrowave(House house) {
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
-                for (ADevice device : room.getDevicesInRoom()) {
-                    if (device instanceof Microwave && device.isFree) {
-                        return (Microwave) device;
+                for (ADevice ADevice : room.getDevicesInRoom()) {
+                    if (ADevice instanceof Microwave && ADevice.isFree) {
+                        return (Microwave) ADevice;
                     }
                 }
             }
@@ -247,9 +235,9 @@ public class SimulationA extends SimulationFactory{
     private Cattle findFreeCattle(House house) {
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
-                for (ADevice device : room.getDevicesInRoom()) {
-                    if (device instanceof Cattle && device.isFree) {
-                        return (Cattle) device;
+                for (ADevice ADevice : room.getDevicesInRoom()) {
+                    if (ADevice instanceof Cattle && ADevice.isFree) {
+                        return (Cattle) ADevice;
                     }
                 }
             }

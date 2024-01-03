@@ -3,10 +3,10 @@ package cz.cvut.fel.omo.semesrtalWork.observer.devices;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.ADeviceState;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.DeviceOffState;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
-import cz.cvut.fel.omo.semesrtalWork.simulation.AAction;
+import cz.cvut.fel.omo.semesrtalWork.simulation.Action;
 import cz.cvut.fel.omo.semesrtalWork.simulation.DataCollector;
 
-public abstract class ADevice extends AAction implements DataCollector {
+public abstract class ADevice extends Action implements DataCollector {
     protected ADeviceState deviceState;
     protected double electricityConsumption = 0;
     protected double gasConsumption = 0;

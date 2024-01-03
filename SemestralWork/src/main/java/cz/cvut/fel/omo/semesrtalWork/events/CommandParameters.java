@@ -2,15 +2,14 @@ package cz.cvut.fel.omo.semesrtalWork.events;
 
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Person;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
-import cz.cvut.fel.omo.semesrtalWork.item.AItem;
+import cz.cvut.fel.omo.semesrtalWork.item.Item;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
-import cz.cvut.fel.omo.semesrtalWork.simulation.AAction;
 
 public class CommandParameters {
     private EventHandler handler;
     private Person person;
-    private AItem item;
-    private ADevice device;
+    private Item item;
+    private ADevice ADevice;
     private Pet pet;
 
 
@@ -18,14 +17,14 @@ public class CommandParameters {
         this.handler = handler;
         this.person = person;
     }
-    public CommandParameters(EventHandler handler, AItem item) {
+    public CommandParameters(EventHandler handler, Item item) {
         this.handler = handler;
         this.item = item;
     }
 
-    public CommandParameters(EventHandler handler, ADevice device) {
+    public CommandParameters(EventHandler handler, ADevice ADevice) {
         this.handler = handler;
-        this.device = device;
+        this.ADevice = ADevice;
     }
 
     public CommandParameters(EventHandler handler, Pet pet) {
@@ -34,7 +33,7 @@ public class CommandParameters {
     }
 
     public ADevice getDevice() {
-        return device;
+        return ADevice;
     }
 
     public Pet getPet() {
@@ -48,7 +47,7 @@ public class CommandParameters {
         return person;
     }
 
-    public AItem getItem() {
+    public Item getItem() {
         return item;
     }
 }

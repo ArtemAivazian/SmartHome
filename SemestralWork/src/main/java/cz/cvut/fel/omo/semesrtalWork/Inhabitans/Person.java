@@ -1,17 +1,13 @@
 package cz.cvut.fel.omo.semesrtalWork.Inhabitans;
 
-import cz.cvut.fel.omo.semesrtalWork.events.ICommand;
-import cz.cvut.fel.omo.semesrtalWork.item.AItem;
-import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
-import cz.cvut.fel.omo.semesrtalWork.simulation.AAction;
+import cz.cvut.fel.omo.semesrtalWork.events.ACommand;
+import cz.cvut.fel.omo.semesrtalWork.simulation.Action;
 
-import java.util.List;
-
-public class Person extends AAction {
-    protected ICommand command;
+public class Person extends Action {
+    protected ACommand command;
     protected boolean isHungry = false;
     protected double fullness = 100;
-    public ICommand getCommand() {
+    public ACommand getCommand() {
         return command;
     }
 
@@ -23,7 +19,7 @@ public class Person extends AAction {
         return fullness;
     }
 
-    public void setCommand(ICommand command) {
+    public void setCommand(ACommand command) {
         this.command = command;
     }
     public void executeCommand() {

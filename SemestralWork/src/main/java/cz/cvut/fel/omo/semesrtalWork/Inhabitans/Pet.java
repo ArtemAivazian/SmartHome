@@ -1,8 +1,8 @@
 package cz.cvut.fel.omo.semesrtalWork.Inhabitans;
 
-import cz.cvut.fel.omo.semesrtalWork.simulation.AAction;
+import cz.cvut.fel.omo.semesrtalWork.simulation.Action;
 
-public class Pet extends AAction {
+public class Pet extends Action {
     protected boolean isHungry = false;
     protected double fullness = 100;
 

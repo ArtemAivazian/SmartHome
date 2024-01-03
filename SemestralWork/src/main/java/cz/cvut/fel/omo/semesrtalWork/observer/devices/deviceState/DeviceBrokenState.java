@@ -4,8 +4,8 @@ import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class DeviceBrokenState extends ADeviceState{
 
-    public DeviceBrokenState(ADevice device, State state) {
-        super(device, state);
+    public DeviceBrokenState(ADevice ADevice, State state) {
+        super(ADevice, state);
     }
 
     @Override
@@ -20,7 +20,7 @@ public class DeviceBrokenState extends ADeviceState{
 
     @Override
     public void fix() {
-        device.changeState(new DeviceFixingState(device, State.FIXING));
+        ADevice.changeState(new DeviceFixingState(ADevice, State.FIXING));
     }
 
     @Override
@@ -29,7 +29,7 @@ public class DeviceBrokenState extends ADeviceState{
     }
 
     @Override
-    public void broke() {
-        device.changeState(new DeviceBrokenState(device, State.BROKEN));
+    public void toBreak() {
+        ADevice.changeState(new DeviceBrokenState(ADevice, State.BROKEN));
     }
 }

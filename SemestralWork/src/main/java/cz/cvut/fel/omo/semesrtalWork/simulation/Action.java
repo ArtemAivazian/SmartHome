@@ -1,6 +1,6 @@
 package cz.cvut.fel.omo.semesrtalWork.simulation;
 
-public abstract class AAction {
+public class Action {
     protected boolean isFree = true;
 
     protected double actionTime;

@@ -3,8 +3,8 @@ package cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 
 public class DeviceUsingState extends ADeviceState{
-    public DeviceUsingState(ADevice device, State state) {
-        super(device, state);
+    public DeviceUsingState(ADevice ADevice, State state) {
+        super(ADevice, state);
     }
 
     @Override
@@ -14,7 +14,7 @@ public class DeviceUsingState extends ADeviceState{
 
     @Override
     public void stopUsage() {
-        device.changeState(new DeviceOffState(device, State.OFF));
+        ADevice.changeState(new DeviceOffState(ADevice, State.OFF));
     }
 
     @Override
@@ -28,7 +28,7 @@ public class DeviceUsingState extends ADeviceState{
     }
 
     @Override
-    public void broke() {
-        device.changeState(new DeviceBrokenState(device, State.BROKEN));
+    public void toBreak() {
+        ADevice.changeState(new DeviceBrokenState(ADevice, State.BROKEN));
     }
 }
