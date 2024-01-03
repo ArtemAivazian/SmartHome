@@ -1,14 +1,9 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
-import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
-import cz.cvut.fel.omo.semesrtalWork.item.AItem;
-import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
-
-public class TakeBikeCommand implements ICommand {
-    private CommandParameters parameters;
+public class TakeBikeCommand extends ACommand {
 
     public TakeBikeCommand(CommandParameters parameters) {
-        this.parameters = parameters;
+        super(parameters);
     }
 
 

@@ -1,10 +1,9 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
-public class MakeTeaCommand implements ICommand{
-    private CommandParameters parameters;
+public class MakeTeaCommand extends ACommand {
 
     public MakeTeaCommand(CommandParameters parameters) {
-        this.parameters = parameters;
+        super(parameters);
     }
 
     @Override

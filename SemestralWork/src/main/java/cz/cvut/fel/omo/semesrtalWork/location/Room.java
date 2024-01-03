@@ -2,7 +2,7 @@ package cz.cvut.fel.omo.semesrtalWork.location;
 
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Person;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
-import cz.cvut.fel.omo.semesrtalWork.item.AItem;
+import cz.cvut.fel.omo.semesrtalWork.item.Item;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 
@@ -14,15 +14,15 @@ public class Room {
     private List<Person> peopleInRoom = new ArrayList<>();
     private List<Pet> petInRoom = new ArrayList<>();
     private List<ADevice> devicesInRoom = new ArrayList<>();
-    private List<AItem> itemsInRoom = new ArrayList<>();
+    private List<Item> itemsInRoom = new ArrayList<>();
 
     public void addSensor(ASensor sensor) {
         sensorsInRoom.add(sensor);
     }
-    public void addDevice(ADevice device) {
-        devicesInRoom.add(device);
+    public void addDevice(ADevice ADevice) {
+        devicesInRoom.add(ADevice);
     }
-    public void addItem(AItem item) {
+    public void addItem(Item item) {
         itemsInRoom.add(item);
     }
     public void addPerson(Person person) {
@@ -39,7 +39,7 @@ public class Room {
     public List<ASensor> getSensorsInRoom() {
         return sensorsInRoom;
     }
-    public List<AItem> getItemsInRoom() {
+    public List<Item> getItemsInRoom() {
         return itemsInRoom;
     }
     public List<Person> getPeopleInRoom() {

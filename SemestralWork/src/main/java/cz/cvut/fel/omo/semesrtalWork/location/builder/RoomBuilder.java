@@ -2,7 +2,7 @@ package cz.cvut.fel.omo.semesrtalWork.location.builder;
 
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Person;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
-import cz.cvut.fel.omo.semesrtalWork.item.AItem;
+import cz.cvut.fel.omo.semesrtalWork.item.Item;
 import cz.cvut.fel.omo.semesrtalWork.location.Room;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
@@ -16,10 +16,10 @@ public class RoomBuilder implements IBuilder{
     public void addSensor(ASensor sensor) {
         room.addSensor(sensor);
     }
-    public void addDevice(ADevice device) {
-        room.addDevice(device);
+    public void addDevice(ADevice ADevice) {
+        room.addDevice(ADevice);
     }
-    public void addItem(AItem item) {
+    public void addItem(Item item) {
         room.addItem(item);
     }
     public void addPerson(Person person) {

@@ -1,10 +1,9 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
-public class WarmUpFoodCommand implements ICommand{
-    private CommandParameters parameters;
+public class WarmUpFoodCommand extends ACommand {
 
     public WarmUpFoodCommand(CommandParameters parameters) {
-        this.parameters = parameters;
+        super(parameters);
     }
 
     @Override
