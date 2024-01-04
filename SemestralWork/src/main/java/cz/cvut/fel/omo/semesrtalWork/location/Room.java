@@ -15,6 +15,7 @@ public class Room {
     private List<Pet> petInRoom = new ArrayList<>();
     private List<ADevice> devicesInRoom = new ArrayList<>();
     private List<Item> itemsInRoom = new ArrayList<>();
+    private String name;
 
     public void addSensor(ASensor sensor) {
         sensorsInRoom.add(sensor);
@@ -47,5 +48,13 @@ public class Room {
     }
     public List<Pet> getPetInRoom() {
         return petInRoom;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

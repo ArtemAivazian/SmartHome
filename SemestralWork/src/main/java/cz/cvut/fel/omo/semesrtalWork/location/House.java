@@ -8,6 +8,7 @@ import java.util.List;
 public class House {
     private List<Floor> floors = new ArrayList<>();
     private List<ASensor> sensorsOnHouse = new ArrayList<>();
+    private String address;
 
     public void addFloor(Floor floor) {
         floors.add(floor);
@@ -22,5 +23,13 @@ public class House {
 
     public List<Floor> getFloors() {
         return floors;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
