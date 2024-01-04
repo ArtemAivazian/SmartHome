@@ -1,17 +1,16 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.smokedevices;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
-import cz.cvut.fel.omo.semesrtalWork.observer.devices.SmokeAbstract;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ASmoke;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.SmokeSensor;
 
-public class FireProtection extends SmokeAbstract {
+public class FireProtection extends ASmoke {
     private SmokeSensor smokeSensor;
-    private final Threshold threshold = Threshold.LOW;
 
     public FireProtection(SmokeSensor smokeSensor) {
         this.smokeSensor = smokeSensor;
+        threshold = Threshold.LOW;
     }
 
     @Override

@@ -18,7 +18,7 @@ import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 public class SimulationA extends SimulationFactory{
     @Override
     public void create() {
-        //      //Create sensors
+//      //Create sensors
 //        var heatSensor = new HeatSensor();
 //        var lightSensor = new LightSensor();
 //
@@ -212,7 +212,19 @@ public class SimulationA extends SimulationFactory{
                 makeBreakfastCommand.add(new TurnOnMicrowaveCommand(commandParameters));
                 makeBreakfastCommand.add(new WarmUpFoodCommand(commandParameters));
                 //TO-DO add off cattle and off microwave
+                commandParameters = new CommandParameters(eventHandler, cattle);
+                TurnOffCattleCommand offCattle = new TurnOffCattleCommand(commandParameters);
+                commandParameters = new CommandParameters(eventHandler, microwave);
+                TurnOffMicrowaveCommand offMicrowave = new TurnOffMicrowaveCommand(commandParameters);
+
+                //make breakfast
                 person.setCommand(makeBreakfastCommand);
+                person.executeCommand();
+
+                //turn off devices
+                person.setCommand(offCattle);
+                person.executeCommand();
+                person.setCommand(offMicrowave);
                 person.executeCommand();
             }
 
