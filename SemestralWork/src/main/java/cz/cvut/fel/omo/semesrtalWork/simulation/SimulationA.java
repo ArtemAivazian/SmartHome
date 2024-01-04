@@ -11,15 +11,21 @@ import cz.cvut.fel.omo.semesrtalWork.location.builder.FloorBuilder;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.HouseBuilder;
 import cz.cvut.fel.omo.semesrtalWork.location.builder.RoomBuilder;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ADevice;
+import cz.cvut.fel.omo.semesrtalWork.observer.heatdevices.Heater;
+import cz.cvut.fel.omo.semesrtalWork.observer.lightdevices.Lamp;
+import cz.cvut.fel.omo.semesrtalWork.observer.lightdevices.WindowBlind;
 import cz.cvut.fel.omo.semesrtalWork.observer.noSensorDevs.Cattle;
 import cz.cvut.fel.omo.semesrtalWork.observer.noSensorDevs.Microwave;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatSensor;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightSensor;
+import java.util.Random;
 
 public class SimulationA extends SimulationFactory{
     @Override
     public void create() {
 //      //Create sensors
-//        var heatSensor = new HeatSensor();
+//        var heatSensor = new HeatASensor();
 //        var lightSensor = new LightSensor();
 //
 //        //Create heat devices
@@ -62,15 +68,17 @@ public class SimulationA extends SimulationFactory{
 
         //Rooms
 //        LightASensor lightASensor = new LightASensor();
-//        HeatASensor heatASensor = new HeatASensor();
+        HeatSensor heatASensor = new HeatSensor();
+        LightSensor lightASensor = new LightSensor();
 //        Lamp lamp = new Lamp(lightASensor);
 
 //        roomBuilder.addSensor(lightASensor);
-//        roomBuilder.addSensor(heatASensor);
+        houseBuilder.addSensor(heatASensor);
+        houseBuilder.addSensor(lightASensor);
+
 //        roomBuilder.addDevice(lamp);
 //        Room childRoom = roomBuilder.getResult();
 
-//        roomBuilder.addSensor(new HeatASensor());
 //        Room adultRoom = roomBuilder.getResult();
         Skis skis = new Skis();
         roomBuilder.addItem(skis);
@@ -96,6 +104,22 @@ public class SimulationA extends SimulationFactory{
         floorBuilder.addRoom(johnRoom);
 //        floorBuilder.addSensor(new LightASensor());
         Floor first = floorBuilder.getResult();
+
+        Heater heaterJohn = new Heater(heatASensor);
+        heatASensor.addHeatDevice(heaterJohn);
+        Heater heaterKitchen = new Heater(heatASensor);
+        heatASensor.addHeatDevice(heaterKitchen);
+        johnRoom.addDevice(heaterJohn);
+        kitchen.addDevice(heaterKitchen);
+
+
+        Lamp lampKitchen = new Lamp(lightASensor);
+        lightASensor.addLightDevice(lampKitchen);
+        kitchen.addDevice(lampKitchen);
+
+        WindowBlind windowBlindJohn = new WindowBlind(lightASensor);
+        lightASensor.addLightDevice(windowBlindJohn);
+        johnRoom.addDevice(windowBlindJohn);
 
         //House
 //        houseBuilder.addSensor(new HeatASensor());
@@ -157,6 +181,18 @@ public class SimulationA extends SimulationFactory{
     }
 
     private void updateHouseState(House house) {
+        Random random = new Random();
+        for (ASensor sensor : house.getSensorsOnHouse()) {
+            if (sensor instanceof LightSensor){
+                sensor.setValueLight(sensor.getValue() + random.nextInt(4) + 3);
+                sensor.updateState(elapsedTime);
+            }
+
+            if (sensor instanceof HeatSensor){
+                sensor.setValueHeat(sensor.getValue() + random.nextInt(4) + 8);
+                sensor.updateState(elapsedTime);
+            }
+        }
         System.out.println(elapsedTime);
         if (elapsedTime == 9) { // 6 sec, it will ignore, because john will not be free at this time(he will eat food), 8 - skies are taken,because john will be free
             for (Floor floor : house.getFloors()) {
@@ -174,6 +210,10 @@ public class SimulationA extends SimulationFactory{
         }
         // Iterate over each room in the house
         for (Floor floor : house.getFloors()) {
+
+            for (ASensor sensor : floor.getSensorsOnFloor()) {
+                sensor.updateState(elapsedTime);
+            }
             for (Room room : floor.getRooms()) {
                 // Update sensors in the room
                 for (ASensor sensor : room.getSensorsInRoom()) {

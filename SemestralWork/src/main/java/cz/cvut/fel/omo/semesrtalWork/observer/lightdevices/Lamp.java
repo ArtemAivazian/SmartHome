@@ -1,24 +1,25 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.lightdevices;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ALight;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightSensor;
 
 public class Lamp extends ALight {
-    private LightASensor lightSensor;
+    private LightSensor lightSensor;
 
-    public Lamp(LightASensor lightSensor) {
+    public Lamp(LightSensor lightSensor) {
         this.lightSensor = lightSensor;
-        threshold = Threshold.LOW;
     }
 
     @Override
     public void execute() {
-        if (lightSensor.getValue() == threshold.getValue())
+        if (deviceState.getState() == State.OFF) {
+            System.out.println("Lamp has been turned on");
             deviceState.use();
-        else
+        } else {
+            System.out.println("Lamp has been turned off");
             deviceState.stopUsage();
+        }
     }
 
     @Override

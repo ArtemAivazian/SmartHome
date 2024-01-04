@@ -18,6 +18,10 @@ public class Floor {
         sensorsOnFloor.add(sensor);
     }
 
+    public List<ASensor> getSensorsOnFloor() {
+        return sensorsOnFloor;
+    }
+
     public List<Room> getRooms() {
         return rooms;
     }

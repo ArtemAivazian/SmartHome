@@ -1,16 +1,15 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.subjects;
 
+import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
+
 public class SmokeSensor extends ASensor{
-    private int value;
 
-    public int getValue() {
-        return value;
+    public SmokeSensor() {
+        this.threshold = Threshold.MEDIUM;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-        notifySmokeDevices();
-    }
+
+
 
     @Override
     public void updateState(double elapsedTime) {
