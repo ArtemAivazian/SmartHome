@@ -17,6 +17,14 @@ public class Pet extends Action {
         }
     }
 
+    public boolean isHungry() {
+        return isHungry;
+    }
+
+    public double getFullness() {
+        return fullness;
+    }
+
     public void setHungry(boolean hungry) {
         isHungry = hungry;
     }

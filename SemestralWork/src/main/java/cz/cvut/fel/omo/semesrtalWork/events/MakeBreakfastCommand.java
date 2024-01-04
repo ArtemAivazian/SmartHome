@@ -17,7 +17,7 @@ public class MakeBreakfastCommand extends ACommand {
     public void execute() {
         parameters.getPerson().setHungry(false);
         parameters.getPerson().setFullness(100);
-        parameters.getPerson().setActionTime(2);
+        parameters.getPerson().setActionTime(3);
         parameters.getPerson().setFree(false);
         for (var command : commands) {
             command.execute();

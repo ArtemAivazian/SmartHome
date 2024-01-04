@@ -158,7 +158,7 @@ public class SimulationA extends SimulationFactory{
 
     private void updateHouseState(House house) {
         System.out.println(elapsedTime);
-        if (elapsedTime == 8) { // 6 sec, it will ignore, because john will not be free at this time(he will eat food), 8 - skies are taken,because john will be free
+        if (elapsedTime == 9) { // 6 sec, it will ignore, because john will not be free at this time(he will eat food), 8 - skies are taken,because john will be free
             for (Floor floor : house.getFloors()) {
                 for (Room room : floor.getRooms()) {
                     for (Person inhabitant : room.getPeopleInRoom()) {
@@ -188,10 +188,11 @@ public class SimulationA extends SimulationFactory{
                 // Update inhabitants in the room
                 for (Person inhabitant : room.getPeopleInRoom()) {
                     inhabitant.updateState(elapsedTime);
-                    check(inhabitant, house);
+                    checkPerson(inhabitant, house);
                 }
                 for (Pet pet : room.getPetInRoom()) {
                     pet.updateState(elapsedTime);
+                    checkPet(pet, house);
                 }
                 for (Item item : room.getItemsInRoom()) {
                     item.updateState(elapsedTime);
@@ -201,7 +202,7 @@ public class SimulationA extends SimulationFactory{
     }
 
 
-    private void check(Person person, House house){
+    private void checkPerson(Person person, House house){
         if (person.isFree()){
             if (person.isHungry()){
                 commandParameters = new CommandParameters(eventHandler, person);
@@ -234,6 +235,16 @@ public class SimulationA extends SimulationFactory{
         }
     }
 
+    private void checkPet(Pet pet, House house){
+        Adult adult = findFreeAdult(house);
+        if (pet.isHungry() && adult != null){
+            commandParameters = new CommandParameters(eventHandler, adult, pet);
+            FeedPetCommand feedPetCommand = new FeedPetCommand(commandParameters);
+            adult.setCommand(feedPetCommand);
+            adult.executeCommand();
+        }
+    }
+
     private Microwave findFreeMicrowave(House house) {
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
@@ -253,6 +264,19 @@ public class SimulationA extends SimulationFactory{
                 for (ADevice ADevice : room.getDevicesInRoom()) {
                     if (ADevice instanceof Cattle && ADevice.isFree) {
                         return (Cattle) ADevice;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private Adult findFreeAdult(House house) {
+        for (Floor floor : house.getFloors()) {
+            for (Room room : floor.getRooms()) {
+                for (Person person : room.getPeopleInRoom()) {
+                    if (person instanceof Adult && person.isFree) {
+                        return (Adult) person;
                     }
                 }
             }

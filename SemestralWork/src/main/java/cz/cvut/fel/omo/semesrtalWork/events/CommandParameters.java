@@ -1,5 +1,6 @@
 package cz.cvut.fel.omo.semesrtalWork.events;
 
+import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Adult;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Person;
 import cz.cvut.fel.omo.semesrtalWork.Inhabitans.Pet;
 import cz.cvut.fel.omo.semesrtalWork.item.Item;
@@ -27,14 +28,15 @@ public class CommandParameters {
         this.person = person;
     }
 
+    public CommandParameters(EventHandler handler, Adult adult, Pet pet) {
+        this.handler = handler;
+        this.person = adult;
+        this.pet = pet;
+    }
+
     public CommandParameters(EventHandler handler, ADevice ADevice) {
         this.handler = handler;
         this.ADevice = ADevice;
-    }
-
-    public CommandParameters(EventHandler handler, Pet pet) {
-        this.handler = handler;
-        this.pet = pet;
     }
 
     public ADevice getDevice() {
