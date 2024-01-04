@@ -11,6 +11,8 @@ public class TakeSkisCommand extends ACommand {
         if (parameters.getItem().isFree()){
             parameters.getItem().use();
             parameters.getHandler().takeSkies();
+            parameters.getPerson().setFree(false);
+            parameters.getPerson().setActionTime(10);
         }
     }
 }
