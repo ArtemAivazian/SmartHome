@@ -1,27 +1,24 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.lightdevices;
 
-import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ALight;
-import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
+import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightSensor;
 
 public class WindowBlind extends ALight {
-    private LightASensor lightSensor;
+    private LightSensor lightSensor;
 
-    public WindowBlind(LightASensor lightSensor) {
+    public WindowBlind(LightSensor lightSensor) {
         this.lightSensor = lightSensor;
-        threshold = Threshold.MEDIUM;
     }
 
     @Override
     public void execute() {
-        if (lightSensor.getValue() > threshold.getValue()) {
+        if (deviceState.getState() == State.OFF) {
+            System.out.println("Window Blin has been turned on");
             deviceState.use();
-            functionality -= 7;
-            electricityConsumption += 10;
         } else {
+            System.out.println("Window Blind has been turned off");
             deviceState.stopUsage();
-            functionality -= 7;
-            electricityConsumption += 10;
         }
     }
 

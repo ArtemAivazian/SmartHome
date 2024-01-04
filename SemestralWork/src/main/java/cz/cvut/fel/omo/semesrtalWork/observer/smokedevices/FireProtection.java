@@ -10,15 +10,14 @@ public class FireProtection extends ASmoke {
 
     public FireProtection(SmokeSensor smokeSensor) {
         this.smokeSensor = smokeSensor;
-        threshold = Threshold.LOW;
     }
 
     @Override
     public void execute() {
-        if (smokeSensor.getValue() > threshold.getValue())
-            deviceState.use();
-        else
-            deviceState.stopUsage();
+//        if (smokeSensor.getValue() > threshold.getValue())
+//            deviceState.use();
+//        else
+//            deviceState.stopUsage();
     }
 
     @Override

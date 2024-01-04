@@ -1,5 +1,6 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.subjects;
 
+import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.AHeat;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ALight;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.ASmoke;
@@ -9,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ASensor implements DataCollector {
+    protected Threshold threshold;
+    protected int value = 0;
+
+    protected boolean turnOn = false;
+
     private List<ALight> lightDevices = new ArrayList<>();
     private List<AHeat> heatDevices = new ArrayList<>();
     private List<ASmoke> smokeDevices = new ArrayList<>();
@@ -43,6 +49,23 @@ public abstract class ASensor implements DataCollector {
         for (var device : smokeDevices) {
             device.execute();
         }
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValueHeat(int value) {
+        this.value = value;
+    }
+
+    public void setValueLight(int value) {
+        this.value = value;
+    }
+
+
+    public void setValueSmoke(int value) {
+        this.value = value;
     }
 
     @Override
