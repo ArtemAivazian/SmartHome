@@ -51,20 +51,20 @@ public class SimulationA extends SimulationFactory{
         // Log house configuration data, including hierarchy and inhabitants
         report.append("House Name: " + house.getAddress() + "\n");
         for (ASensor sensor : house.getSensorsOnHouse()) {
-            report.append("Sensor Type: " + sensor.getClass() + ". Has been added on house by address: " + house.getAddress() + "\n");
+            report.append("Sensor Type: " + sensor.getType() + ". Has been added on house by address: " + house.getAddress() + "\n");
         }
         for (Floor floor : house.getFloors()) {
 
             for (ASensor sensor : floor.getSensorsOnFloor()) {
-                report.append("Sensor Type: " + sensor.getClass() + ". Has been added on the " + floor.getLevel() + " floor\n");
+                report.append("Sensor Type: " + sensor.getType() + ". Has been added on the " + floor.getLevel() + " floor\n");
             }
             for (Room room : floor.getRooms()) {
                 for (ASensor sensor : room.getSensorsInRoom()) {
-                    report.append("Sensor Type: " + sensor.getClass() + ". Has been added to the " + room.getName() + "\n");
+                    report.append("Sensor Type: " + sensor.getType() + ". Has been added to the " + room.getName() + "\n");
                 }
 
                 for (ADevice device : room.getDevicesInRoom()) {
-                    report.append("Device Type: " + device.getClass() + ". Has been added to the " + room.getName() + "\n");
+                    report.append("Device Type: " + device.getType() + ". Has been added to the " + room.getName() + "\n");
                 }
 
                 for (Person person : room.getPeopleInRoom()) {
@@ -74,7 +74,7 @@ public class SimulationA extends SimulationFactory{
                     report.append("Pet: " + pet.getName() + ". Has been added to the " + room.getName() + "\n");
                 }
                 for (Item item : room.getItemsInRoom()) {
-                    report.append("Item Type: " + item.getClass() + ". Has been added to the " + room.getName() + "\n");
+                    report.append("Item Type: " + item.getType() + ". Has been added to the " + room.getName() + "\n");
                 }
             }
         }
@@ -104,14 +104,44 @@ public class SimulationA extends SimulationFactory{
         log(report.toString());
     }
 
-    private void logConsumptionReport(ADevice device, double electricityConsumption, double gasConsumption, double waterConsumption) {
+    private void logConsumptionReport(House house) {
         StringBuilder report = new StringBuilder("ConsumptionReport: Consumption details\n");
-        // Log consumption details, including device and consumption values
-        // Example: report.append("Device: " + device.getName() + "\n");
-        // Example: report.append("Electricity Consumption: " + electricityConsumption + " kWh\n");
-        // Example: report.append("Gas Consumption: " + gasConsumption + " cubic meters\n");
-        // Example: report.append("Water Consumption: " + waterConsumption + " liters\n");
-        // ...
+        for (ASensor sensor : house.getSensorsOnHouse()) {
+            report.append("Sensor: " + sensor.getType() + "\n");
+            report.append("Electricity Consumption: " + sensor.getElectricityConsumption() + " kWh\n");
+            report.append("Gas Consumption: " + sensor.getGasConsumption() + " cubic meters\n");
+            report.append("Water Consumption: " + sensor.getWaterConsumption() + " liters\n");
+            report.append("Functionality: " + sensor.getFunctionality() + " %\n");
+            report.append("---------------------------------------------------\n");
+        }
+        for (Floor floor : house.getFloors()) {
+            for (ASensor sensor : floor.getSensorsOnFloor()) {
+                report.append("Sensor: " + sensor.getType() + "\n");
+                report.append("Electricity Consumption: " + sensor.getElectricityConsumption() + " kWh\n");
+                report.append("Gas Consumption: " + sensor.getGasConsumption() + " cubic meters\n");
+                report.append("Water Consumption: " + sensor.getWaterConsumption() + " liters\n");
+                report.append("Functionality: " + sensor.getFunctionality() + " %\n");
+                report.append("---------------------------------------------------\n");
+            }
+            for (Room room : floor.getRooms()) {
+                for (ASensor sensor : room.getSensorsInRoom()) {
+                    report.append("Sensor: " + sensor.getType() + "\n");
+                    report.append("Electricity Consumption: " + sensor.getElectricityConsumption() + " kWh\n");
+                    report.append("Gas Consumption: " + sensor.getGasConsumption() + " cubic meters\n");
+                    report.append("Water Consumption: " + sensor.getWaterConsumption() + " liters\n");
+                    report.append("Functionality: " + sensor.getFunctionality() + " %\n");
+                    report.append("---------------------------------------------------\n");
+                }
+                for (ADevice device : room.getDevicesInRoom()) {
+                    report.append("Device: " + device.getType() + "\n");
+                    report.append("Electricity Consumption: " + device.getElectricityConsumption()+ " kWh\n");
+                    report.append("Gas Consumption: " + device.getGasConsumption() + " cubic meters\n");
+                    report.append("Water Consumption: " + device.getWaterConsumption() + " liters\n");
+                    report.append("Functionality: " + device.getFunctionality() + " %\n");
+                    report.append("---------------------------------------------------\n");
+                }
+            }
+        }
 
         log(report.toString());
     }
@@ -128,19 +158,25 @@ public class SimulationA extends SimulationFactory{
         RoomBuilder roomBuilder = new RoomBuilder();
 
         //Rooms
-        HeatSensor heatASensor = new HeatSensor();
-        LightSensor lightASensor = new LightSensor();
+        HeatSensor heatSensor = new HeatSensor();
+        heatSensor.setType("Heat Sensor");
+        LightSensor lightSensor = new LightSensor();
+        lightSensor.setType("Light Sensor");
 
-        houseBuilder.addSensor(heatASensor);
-        houseBuilder.addSensor(lightASensor);
+        houseBuilder.addSensor(heatSensor);
+        houseBuilder.addSensor(lightSensor);
 
         Skis skis = new Skis();
+        skis.setType("Skies");
         roomBuilder.addItem(skis);
         Room storage = roomBuilder.getResult();
+        storage.setName("Storage");
 
 
         Cattle cattle = new Cattle();
+        cattle.setType("Cattle");
         Microwave microwave = new Microwave();
+        microwave.setType("Microwave");
         roomBuilder.addDevice(cattle);
         roomBuilder.addDevice(microwave);
         Room kitchen = roomBuilder.getResult();
@@ -160,20 +196,24 @@ public class SimulationA extends SimulationFactory{
         Floor first = floorBuilder.getResult();
         first.setLevel(1);
 
-        Heater heaterJohn = new Heater(heatASensor);
-        heatASensor.addHeatDevice(heaterJohn);
-        Heater heaterKitchen = new Heater(heatASensor);
-        heatASensor.addHeatDevice(heaterKitchen);
+        Heater heaterJohn = new Heater(heatSensor);
+        heaterJohn.setType("Heat Device");
+        heatSensor.addHeatDevice(heaterJohn);
+        Heater heaterKitchen = new Heater(heatSensor);
+        heaterKitchen.setType("Heat Device");
+        heatSensor.addHeatDevice(heaterKitchen);
         johnRoom.addDevice(heaterJohn);
         kitchen.addDevice(heaterKitchen);
 
 
-        Lamp lampKitchen = new Lamp(lightASensor);
-        lightASensor.addLightDevice(lampKitchen);
+        Lamp lampKitchen = new Lamp(lightSensor);
+        lampKitchen.setType("Lamp");
+        lightSensor.addLightDevice(lampKitchen);
         kitchen.addDevice(lampKitchen);
 
-        WindowBlind windowBlindJohn = new WindowBlind(lightASensor);
-        lightASensor.addLightDevice(windowBlindJohn);
+        WindowBlind windowBlindJohn = new WindowBlind(lightSensor);
+        windowBlindJohn.setType("Window Blind");
+        lightSensor.addLightDevice(windowBlindJohn);
         johnRoom.addDevice(windowBlindJohn);
 
         //House
@@ -197,6 +237,9 @@ public class SimulationA extends SimulationFactory{
         while (true){
             passedTime = System.currentTimeMillis();
             if (passedTime- startTime > fps){
+                if (elapsedTime % 15 == 0 && elapsedTime != 0) {
+                    logConsumptionReport(house);
+                }
                 elapsedTime++;
                 updateHouseState(house);
                 startTime = passedTime;
@@ -218,6 +261,23 @@ public class SimulationA extends SimulationFactory{
     }
 
     private void updateHouseState(House house) {
+//        parameters.getDevice().setActionTime(2);
+//        parameters.getDevice().setFree(false);
+        //turn off
+        for (Floor floor : house.getFloors()) {
+            for (Room room : floor.getRooms()) {
+                // Update devices in the room
+                for (ADevice device : room.getDevicesInRoom()) {
+                    if (!device.isFree && device.getActionTime() == 0) {
+                        //no command because it is Smart House and nobody is needed to turn Off a device
+                        device.stopUsage();
+                        device.setFree(true);
+                        System.out.println("Turn off " + device.getType());
+                        device.updateState(elapsedTime);
+                    }
+                }
+            }
+        }
         Random random = new Random();
         for (ASensor sensor : house.getSensorsOnHouse()) {
             if (sensor instanceof LightSensor){
@@ -258,8 +318,8 @@ public class SimulationA extends SimulationFactory{
                 }
 
                 // Update devices in the room
-                for (ADevice ADevice : room.getDevicesInRoom()) {
-                    ADevice.updateState(elapsedTime);
+                for (ADevice device : room.getDevicesInRoom()) {
+                    device.updateState(elapsedTime);
                 }
 
                 // Update inhabitants in the room
@@ -286,27 +346,20 @@ public class SimulationA extends SimulationFactory{
                 MakeBreakfastCommand makeBreakfastCommand = new MakeBreakfastCommand(commandParameters);
                 Cattle cattle = findFreeCattle(house);
                 Microwave microwave = findFreeMicrowave(house);
-                commandParameters = new CommandParameters(eventHandler, cattle);
-                makeBreakfastCommand.add(new TurnOnCattleCommand(commandParameters));
-                makeBreakfastCommand.add(new MakeTeaCommand(commandParameters));
-                commandParameters = new CommandParameters(eventHandler, microwave);
-                makeBreakfastCommand.add(new TurnOnMicrowaveCommand(commandParameters));
-                makeBreakfastCommand.add(new WarmUpFoodCommand(commandParameters));
-                //TO-DO add off cattle and off microwave
-                commandParameters = new CommandParameters(eventHandler, cattle);
-                TurnOffCattleCommand offCattle = new TurnOffCattleCommand(commandParameters);
-                commandParameters = new CommandParameters(eventHandler, microwave);
-                TurnOffMicrowaveCommand offMicrowave = new TurnOffMicrowaveCommand(commandParameters);
+                if (cattle != null && microwave != null) {
+                    commandParameters = new CommandParameters(eventHandler, cattle);
+                    makeBreakfastCommand.add(new TurnOnCattleCommand(commandParameters));
+                    makeBreakfastCommand.add(new MakeTeaCommand(commandParameters));
+                    commandParameters = new CommandParameters(eventHandler, microwave);
+                    makeBreakfastCommand.add(new TurnOnMicrowaveCommand(commandParameters));
+                    makeBreakfastCommand.add(new WarmUpFoodCommand(commandParameters));
 
-                //make breakfast
-                person.setCommand(makeBreakfastCommand);
-                person.executeCommand();
-
-                //turn off devices
-                person.setCommand(offCattle);
-                person.executeCommand();
-                person.setCommand(offMicrowave);
-                person.executeCommand();
+                    //make breakfast
+                    person.setCommand(makeBreakfastCommand);
+                    person.executeCommand();
+                } else {
+                    logger.info("Waiting for freeing devices");
+                }
             }
 
         }
@@ -325,9 +378,9 @@ public class SimulationA extends SimulationFactory{
     private Microwave findFreeMicrowave(House house) {
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
-                for (ADevice ADevice : room.getDevicesInRoom()) {
-                    if (ADevice instanceof Microwave && ADevice.isFree) {
-                        return (Microwave) ADevice;
+                for (ADevice device : room.getDevicesInRoom()) {
+                    if (device instanceof Microwave && device.isFree) {
+                        return (Microwave) device;
                     }
                 }
             }
@@ -338,9 +391,9 @@ public class SimulationA extends SimulationFactory{
     private Cattle findFreeCattle(House house) {
         for (Floor floor : house.getFloors()) {
             for (Room room : floor.getRooms()) {
-                for (ADevice ADevice : room.getDevicesInRoom()) {
-                    if (ADevice instanceof Cattle && ADevice.isFree) {
-                        return (Cattle) ADevice;
+                for (ADevice device : room.getDevicesInRoom()) {
+                    if (device instanceof Cattle && device.isFree) {
+                        return (Cattle) device;
                     }
                 }
             }

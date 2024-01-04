@@ -10,6 +10,7 @@ public class Microwave extends ADevice {
         if (deviceState.getState() == State.USING) {
             functionality -= 1.5;
             electricityConsumption += 10;
+            actionTime--;
         }
     }
 }

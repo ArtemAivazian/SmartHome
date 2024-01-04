@@ -22,6 +22,7 @@ public abstract class ASensor implements DataCollector {
     protected double gasConsumption = 0;
     protected double waterConsumption = 0;
     protected double functionality = 100; // Procentuální hodnota od 0 do 100
+    private String type;
 
 
     public void addLightDevice(ALight device){
@@ -89,4 +90,12 @@ public abstract class ASensor implements DataCollector {
     }
 
     public abstract void updateState(double elapsedTime);
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

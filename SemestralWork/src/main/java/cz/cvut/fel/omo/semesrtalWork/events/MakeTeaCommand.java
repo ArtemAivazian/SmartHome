@@ -8,6 +8,8 @@ public class MakeTeaCommand extends ACommand {
 
     @Override
     public void execute() {
+        parameters.getDevice().setActionTime(2);
+        parameters.getDevice().setFree(false);
         parameters.getHandler().makeTea();
     }
 }

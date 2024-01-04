@@ -9,6 +9,7 @@ public class Cattle extends ADevice {
         if (deviceState.getState() == State.USING) {
             electricityConsumption += 5;
             functionality -= 3.5;
+            actionTime--;
         }
     }
 }
