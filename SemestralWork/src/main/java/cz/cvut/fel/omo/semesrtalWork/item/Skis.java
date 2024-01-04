@@ -10,8 +10,9 @@ public class Skis extends Item {
         if (!isFree){
             actionTime--;
             if (actionTime == 0){
+                System.out.println("Skis are Free");
                 isFree = true;
-                actionTime = 8;
+                actionTime = 10;
             }
         }
     }

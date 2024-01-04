@@ -21,6 +21,11 @@ public class CommandParameters {
         this.handler = handler;
         this.item = item;
     }
+    public CommandParameters(EventHandler handler, Item item, Person person) {
+        this.handler = handler;
+        this.item = item;
+        this.person = person;
+    }
 
     public CommandParameters(EventHandler handler, ADevice ADevice) {
         this.handler = handler;

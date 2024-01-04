@@ -129,7 +129,7 @@ public class SimulationA extends SimulationFactory{
 
     public void run(House house){
 
-        double fps = 1000;
+        double fps = 500;
         long startTime = System.currentTimeMillis();
         long passedTime;
 
@@ -164,7 +164,7 @@ public class SimulationA extends SimulationFactory{
                     for (Person inhabitant : room.getPeopleInRoom()) {
                         if (inhabitant.isFree) {
                             Skis skis = findFreeSkis(house);
-                            commandParameters = new CommandParameters(eventHandler, skis);
+                            commandParameters = new CommandParameters(eventHandler, skis, inhabitant);
                             inhabitant.setCommand(new TakeSkisCommand(commandParameters));
                             inhabitant.executeCommand();
                         }
@@ -192,6 +192,9 @@ public class SimulationA extends SimulationFactory{
                 }
                 for (Pet pet : room.getPetInRoom()) {
                     pet.updateState(elapsedTime);
+                }
+                for (Item item : room.getItemsInRoom()) {
+                    item.updateState(elapsedTime);
                 }
             }
         }
