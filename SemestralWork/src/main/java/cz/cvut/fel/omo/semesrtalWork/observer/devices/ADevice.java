@@ -12,6 +12,7 @@ public abstract class ADevice extends Action implements DataCollector {
     protected double gasConsumption = 0;
     protected double waterConsumption = 0;
     protected double functionality = 100; // Procentuální hodnota od 0 do 100
+    private String type;
 
 
     public ADevice() {
@@ -51,4 +52,12 @@ public abstract class ADevice extends Action implements DataCollector {
     }
 
     public abstract void updateState(double elapsedTime);
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
