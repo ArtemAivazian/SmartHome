@@ -1,16 +1,16 @@
 package cz.cvut.fel.omo.semesrtalWork.observer.lightdevices;
 
 import cz.cvut.fel.omo.semesrtalWork.observer.Threshold;
-import cz.cvut.fel.omo.semesrtalWork.observer.devices.LightAbstract;
+import cz.cvut.fel.omo.semesrtalWork.observer.devices.ALight;
 import cz.cvut.fel.omo.semesrtalWork.observer.devices.deviceState.State;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightASensor;
 
-public class Lamp extends LightAbstract {
+public class Lamp extends ALight {
     private LightASensor lightSensor;
-    private final Threshold threshold = Threshold.LOW;
 
     public Lamp(LightASensor lightSensor) {
         this.lightSensor = lightSensor;
+        threshold = Threshold.LOW;
     }
 
     @Override
