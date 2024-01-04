@@ -7,6 +7,13 @@ public class Person extends Action {
     protected ACommand command;
     protected boolean isHungry = false;
     protected double fullness = 100;
+
+    private String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
     public ACommand getCommand() {
         return command;
     }
@@ -53,4 +60,7 @@ public class Person extends Action {
         this.fullness = fullness;
     }
 
+    public String getName() {
+        return name;
+    }
 }

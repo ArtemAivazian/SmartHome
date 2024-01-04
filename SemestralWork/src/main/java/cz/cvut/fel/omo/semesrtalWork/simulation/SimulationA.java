@@ -19,67 +19,121 @@ import cz.cvut.fel.omo.semesrtalWork.observer.noSensorDevs.Microwave;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.ASensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.HeatSensor;
 import cz.cvut.fel.omo.semesrtalWork.observer.subjects.LightSensor;
+
+import java.io.IOException;
 import java.util.Random;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class SimulationA extends SimulationFactory{
+
+    private static final Logger logger = Logger.getLogger(SimulationA.class.getName());
+    private static final String LOG_FILE = "report.txt";
+
+    public SimulationA() {
+        configureLogger();
+    }
+
+    private void configureLogger() {
+        try {
+            FileHandler fileHandler = new FileHandler(LOG_FILE, true);
+            SimpleFormatter simpleFormatter = new SimpleFormatter();
+            fileHandler.setFormatter(simpleFormatter);
+            logger.addHandler(fileHandler);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void logHouseConfigurationReport(House house) {
+        StringBuilder report = new StringBuilder("HouseConfigurationReport: Configuration data of the house\n");
+        // Log house configuration data, including hierarchy and inhabitants
+        report.append("House Name: " + house.getAddress() + "\n");
+        for (ASensor sensor : house.getSensorsOnHouse()) {
+            report.append("Sensor Type: " + sensor.getClass() + ". Has been added on house by address: " + house.getAddress() + "\n");
+        }
+        for (Floor floor : house.getFloors()) {
+
+            for (ASensor sensor : floor.getSensorsOnFloor()) {
+                report.append("Sensor Type: " + sensor.getClass() + ". Has been added on the " + floor.getLevel() + " floor\n");
+            }
+            for (Room room : floor.getRooms()) {
+                for (ASensor sensor : room.getSensorsInRoom()) {
+                    report.append("Sensor Type: " + sensor.getClass() + ". Has been added to the " + room.getName() + "\n");
+                }
+
+                for (ADevice device : room.getDevicesInRoom()) {
+                    report.append("Device Type: " + device.getClass() + ". Has been added to the " + room.getName() + "\n");
+                }
+
+                for (Person person : room.getPeopleInRoom()) {
+                    report.append("Person: " + person.getName() + ". Has been added to the " + room.getName() + "\n");
+                }
+                for (Pet pet : room.getPetInRoom()) {
+                    report.append("Pet: " + pet.getName() + ". Has been added to the " + room.getName() + "\n");
+                }
+                for (Item item : room.getItemsInRoom()) {
+                    report.append("Item Type: " + item.getClass() + ". Has been added to the " + room.getName() + "\n");
+                }
+            }
+        }
+
+        log(report.toString());
+    }
+
+//    private void logEventReport(Event event) {
+//        StringBuilder report = new StringBuilder("EventReport: Event details\n");
+//        // Log event details, including type, source, and target entities
+//        // Example: report.append("Event Type: " + event.getType() + "\n");
+//        // Example: report.append("Source Entity: " + event.getSource() + "\n");
+//        // Example: report.append("Target Entity: " + event.getTarget() + "\n");
+//        // ...
+//
+//        log(report.toString());
+//    }
+
+    private void logActivityAndUsageReport(Person person, ADevice device) {
+        StringBuilder report = new StringBuilder("ActivityAndUsageReport: Activity and Usage details\n");
+        // Log activity and usage details, including person, device, and usage count
+        // Example: report.append("Person: " + person.getName() + "\n");
+        // Example: report.append("Device: " + device.getName() + "\n");
+        // Example: report.append("Usage Count: " + device.getUsageCount() + "\n");
+        // ...
+
+        log(report.toString());
+    }
+
+    private void logConsumptionReport(ADevice device, double electricityConsumption, double gasConsumption, double waterConsumption) {
+        StringBuilder report = new StringBuilder("ConsumptionReport: Consumption details\n");
+        // Log consumption details, including device and consumption values
+        // Example: report.append("Device: " + device.getName() + "\n");
+        // Example: report.append("Electricity Consumption: " + electricityConsumption + " kWh\n");
+        // Example: report.append("Gas Consumption: " + gasConsumption + " cubic meters\n");
+        // Example: report.append("Water Consumption: " + waterConsumption + " liters\n");
+        // ...
+
+        log(report.toString());
+    }
+
+    private void log(String message) {
+        logger.info(message);
+    }
+
     @Override
     public void create() {
-//      //Create sensors
-//        var heatSensor = new HeatASensor();
-//        var lightSensor = new LightSensor();
-//
-//        //Create heat devices
-//        var heater = new Heater(heatSensor);
-//        //Create light devices
-//        var lamp = new Lamp(lightSensor);
-//        var solarPanel = new SolarPanel(lightSensor);
-//        var windowBlind = new WindowBlind(lightSensor);
-//
-//        //Add to the light sensor light devices
-//        lightSensor.addLightDevice(lamp);
-//        lightSensor.addLightDevice(solarPanel);
-//        lightSensor.addLightDevice(windowBlind);
-//
-//        //Add to the heat sensor heat devices
-//        heatSensor.addHeatDevice(heater);
-//
-//        //set light sensor to 100
-//        lightSensor.setValue(0);
-//        heatSensor.setValue(10);
-
-//        var handler = new EventHandler();
-//        var feed_pet = new FeedPetCommand(handler);
-//        var take_skis = new TakeSkisCommand(handler);
-//        var pedro = new Adult();
-//
-//
-//        //feeding executing
-//        pedro.setCommand(feed_pet);
-//        pedro.invokeEvent();
-//
-//        //taking skis executing
-//        pedro.setCommand(take_skis);
-//        pedro.invokeEvent();
-
         //Builders
         HouseBuilder houseBuilder = new HouseBuilder();
         FloorBuilder floorBuilder = new FloorBuilder();
         RoomBuilder roomBuilder = new RoomBuilder();
 
         //Rooms
-//        LightASensor lightASensor = new LightASensor();
         HeatSensor heatASensor = new HeatSensor();
         LightSensor lightASensor = new LightSensor();
-//        Lamp lamp = new Lamp(lightASensor);
 
-//        roomBuilder.addSensor(lightASensor);
         houseBuilder.addSensor(heatASensor);
         houseBuilder.addSensor(lightASensor);
 
-//        roomBuilder.addDevice(lamp);
-//        Room childRoom = roomBuilder.getResult();
-
-//        Room adultRoom = roomBuilder.getResult();
         Skis skis = new Skis();
         roomBuilder.addItem(skis);
         Room storage = roomBuilder.getResult();
@@ -90,20 +144,21 @@ public class SimulationA extends SimulationFactory{
         roomBuilder.addDevice(cattle);
         roomBuilder.addDevice(microwave);
         Room kitchen = roomBuilder.getResult();
+        kitchen.setName("Kitchen");
 
-        Adult john = new Adult();
-        Pet cat = new Pet();
+        Adult john = new Adult("John");
+        Pet cat = new Pet("Marco");
         roomBuilder.addPerson(john);
         roomBuilder.addPet(cat);
         Room johnRoom = roomBuilder.getResult();
+        johnRoom.setName("John Room");
 
         //Floors
-//        floorBuilder.addRoom(childRoom);
         floorBuilder.addRoom(storage);
         floorBuilder.addRoom(kitchen);
         floorBuilder.addRoom(johnRoom);
-//        floorBuilder.addSensor(new LightASensor());
         Floor first = floorBuilder.getResult();
+        first.setLevel(1);
 
         Heater heaterJohn = new Heater(heatASensor);
         heatASensor.addHeatDevice(heaterJohn);
@@ -122,35 +177,17 @@ public class SimulationA extends SimulationFactory{
         johnRoom.addDevice(windowBlindJohn);
 
         //House
-//        houseBuilder.addSensor(new HeatASensor());
-//        houseBuilder.addSensor(new LightASensor());
         houseBuilder.addFloor(first);
         House house = houseBuilder.getResult();
-
-
-//        childRoom.addSensor(new LightASensor());
-//        lamp.changeState(new DeviceBrokenState(lamp, State.BROKEN));
-//
-//        Cattle cattle = new Cattle();
-//        Adult adult = new Adult();
-//        adultRoom.addDevice(cattle);
-//        adultRoom.addPerson(adult);
-
-
-
-//        Pet cat = new Pet();
-//        adultRoom.addPet(cat);
-
-
+        house.setAddress("Dejvicka 6, Praha 6, 16000");
 
         // Initialize simulation state
         elapsedTime = 0;
         // Start the simulation
+        log("Start simulation!");
+        logHouseConfigurationReport(house);
         run(house);
     }
-
-
-
     public void run(House house){
 
         double fps = 500;

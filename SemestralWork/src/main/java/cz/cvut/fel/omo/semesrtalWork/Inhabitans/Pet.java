@@ -5,6 +5,11 @@ import cz.cvut.fel.omo.semesrtalWork.simulation.Action;
 public class Pet extends Action {
     protected boolean isHungry = false;
     protected double fullness = 100;
+    private String name;
+
+    public Pet(String name) {
+        this.name = name;
+    }
 
     public void updateState(double elapsedTime) {
         if (!isHungry) {
@@ -31,5 +36,9 @@ public class Pet extends Action {
 
     public void setFullness(double fullness) {
         this.fullness = fullness;
+    }
+
+    public String getName() {
+        return name;
     }
 }
