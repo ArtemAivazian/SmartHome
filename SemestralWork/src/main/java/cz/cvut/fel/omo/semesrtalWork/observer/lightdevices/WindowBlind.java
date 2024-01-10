@@ -15,10 +15,10 @@ public class WindowBlind extends ALight {
     public void execute() {
         if (deviceState.getState() == State.OFF) {
             System.out.println("Window Blin has been turned on");
-            deviceState.use();
+            this.use();
         } else {
             System.out.println("Window Blind has been turned off");
-            deviceState.stopUsage();
+            stopUsage();
         }
     }
 

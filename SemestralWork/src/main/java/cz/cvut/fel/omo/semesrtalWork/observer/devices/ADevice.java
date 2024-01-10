@@ -8,6 +8,8 @@ import cz.cvut.fel.omo.semesrtalWork.simulation.DataCollector;
 
 public abstract class ADevice extends Action implements DataCollector {
     protected ADeviceState deviceState;
+    protected double usageCout= 0;
+
     protected double electricityConsumption = 0;
     protected double gasConsumption = 0;
     protected double waterConsumption = 0;
@@ -22,6 +24,7 @@ public abstract class ADevice extends Action implements DataCollector {
         deviceState = state;
     }
     public void use() {
+        this.setUsageCout(getUsageCout() + 1);
         deviceState.use();
     }
     public void stopUsage() {
@@ -59,5 +62,12 @@ public abstract class ADevice extends Action implements DataCollector {
 
     public void setType(String type) {
         this.type = type;
+    }
+    public double getUsageCout() {
+        return usageCout;
+    }
+
+    public void setUsageCout(double usageCout) {
+        this.usageCout = usageCout;
     }
 }

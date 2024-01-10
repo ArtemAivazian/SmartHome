@@ -9,16 +9,15 @@ public class Heater extends AHeat {
     private HeatSensor heatSensor;
     public Heater(HeatSensor heatSensor) {
         this.heatSensor = heatSensor;
-
     }
     @Override
     public void execute() {
         if (deviceState.getState() == State.OFF) {
             System.out.println("Heater has been turned on");
-            deviceState.use();
+            this.use();
         } else {
             System.out.println("Heater has been turned off");
-            deviceState.stopUsage();
+            stopUsage();
         }
     }
 
