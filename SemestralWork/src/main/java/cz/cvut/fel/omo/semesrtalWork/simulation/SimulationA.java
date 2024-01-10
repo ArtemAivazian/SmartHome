@@ -82,25 +82,79 @@ public class SimulationA extends SimulationFactory{
         log(report.toString());
     }
 
-//    private void logEventReport(Event event) {
-//        StringBuilder report = new StringBuilder("EventReport: Event details\n");
-//        // Log event details, including type, source, and target entities
-//        // Example: report.append("Event Type: " + event.getType() + "\n");
-//        // Example: report.append("Source Entity: " + event.getSource() + "\n");
-//        // Example: report.append("Target Entity: " + event.getTarget() + "\n");
-//        // ...
-//
-//        log(report.toString());
-//    }
+    private void logEventReport(House house) {
+        StringBuilder report = new StringBuilder("EventReport: Event details\n");
+        for (ASensor sensor : house.getSensorsOnHouse()) {
+            if (sensor.isTurnOn()) {
+                report.append("Sensor: " + sensor.getType() + " is turn on\n");
+            }else {
+                report.append("Sensor: " + sensor.getType() + " is turn off\n");
+            }
+        }
+        for (Floor floor : house.getFloors()) {
+            for (ASensor sensor : floor.getSensorsOnFloor()) {
+                if (sensor.isTurnOn()) {
+                    report.append("Sensor: " + sensor.getType() + " is turn on\n");
+                }else {
+                    report.append("Sensor: " + sensor.getType() + " is turn off\n");
+                }
+            }
+            for (Room room : floor.getRooms()) {
+                for (ASensor sensor : room.getSensorsInRoom()) {
+                    if (sensor.isTurnOn()) {
+                        report.append("Sensor: " + sensor.getType() + " is turn on\n");
+                    } else {
+                        report.append("Sensor: " + sensor.getType() + " is turn off\n");
+                    }
+                }
+                for (ADevice device : room.getDevicesInRoom()) {
+                    if (!device.isFree) {
+                        report.append("Device: " + device.getType() + " is not available\n");
+                    } else {
+                        report.append("Device: " + device.getType() + " is available\n");
+                    }
+                }
+                for (Person person : room.getPeopleInRoom()) {
+                    if (!person.isFree){
+                        report.append("Person: " + person.getName() + " is not available\n");
+                    } else
+                    {
+                        report.append("Person: " + person.getName() + " is available\n");
+                    }
+                }
+                for (Pet pet : room.getPetInRoom()) {
+                    if (!pet.isFree){
+                        report.append("Pet: " + pet.getName() + " is not available\n");
+                    }
+                    else {
+                        report.append("Pet: " + pet.getName() + " is available\n");
+                    }
+                }
+                for (Item item : room.getItemsInRoom()) {
+                    if (!item.isFree()){
+                        report.append("Item: " + item.getType() + " is not available\n");
+                    }
+                    else {
+                        report.append("Item: " + item.getType() + " is available\n");
+                    }
+                }
+            }
+        }
 
-    private void logActivityAndUsageReport(Person person, ADevice device) {
+        log(report.toString());
+    }
+
+    private void logActivityAndUsageReport(House house) {
         StringBuilder report = new StringBuilder("ActivityAndUsageReport: Activity and Usage details\n");
-        // Log activity and usage details, including person, device, and usage count
-        // Example: report.append("Person: " + person.getName() + "\n");
-        // Example: report.append("Device: " + device.getName() + "\n");
-        // Example: report.append("Usage Count: " + device.getUsageCount() + "\n");
-        // ...
-
+        for (Floor floor : house.getFloors()) {
+            for (Room room : floor.getRooms()) {
+                for (ADevice device : room.getDevicesInRoom()) {
+                    report.append("Device: " + device.getType() + "\n");
+                    report.append("Usage Count: " + device.getUsageCout() + "\n");
+                    report.append("---------------------------------------------------\n");
+                }
+            }
+        }
         log(report.toString());
     }
 
@@ -230,7 +284,7 @@ public class SimulationA extends SimulationFactory{
     }
     public void run(House house){
 
-        double fps = 500;
+        double fps = 100;
         long startTime = System.currentTimeMillis();
         long passedTime;
 
@@ -239,6 +293,8 @@ public class SimulationA extends SimulationFactory{
             if (passedTime- startTime > fps){
                 if (elapsedTime % 15 == 0 && elapsedTime != 0) {
                     logConsumptionReport(house);
+                    logActivityAndUsageReport(house);
+                    logEventReport(house);
                 }
                 elapsedTime++;
                 updateHouseState(house);

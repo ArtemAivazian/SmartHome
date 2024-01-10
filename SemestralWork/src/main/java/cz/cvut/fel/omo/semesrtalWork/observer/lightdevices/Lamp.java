@@ -15,10 +15,10 @@ public class Lamp extends ALight {
     public void execute() {
         if (deviceState.getState() == State.OFF) {
             System.out.println("Lamp has been turned on");
-            deviceState.use();
+            this.use();
         } else {
             System.out.println("Lamp has been turned off");
-            deviceState.stopUsage();
+            stopUsage();
         }
     }
 

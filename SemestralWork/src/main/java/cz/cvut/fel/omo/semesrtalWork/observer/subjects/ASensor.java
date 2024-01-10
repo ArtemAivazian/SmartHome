@@ -98,4 +98,12 @@ public abstract class ASensor implements DataCollector {
     public void setType(String type) {
         this.type = type;
     }
+
+    public boolean isTurnOn() {
+        return turnOn;
+    }
+
+    public void setTurnOn(boolean turnOn) {
+        this.turnOn = turnOn;
+    }
 }
