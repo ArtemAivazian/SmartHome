@@ -1,5 +1,5 @@
 # Smart Home Simulation
-**Authors**: [Artem Aivazian](@aivazart), [Illia Zozuliak](@zozulil)
+**Authors**: [Artem Aivazian](@aivazart), [Illia Zozuliak](@zozulill)
 ## Description
 Create an application for virtual simulation of a smart home, where we simulate the operation of the household, use individual home devices and evaluate the use, consumption, leisure and working time of individual persons.
 ## UML use case diagram
