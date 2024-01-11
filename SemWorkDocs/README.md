@@ -3,9 +3,9 @@
 ## Description
 Create an application for virtual simulation of a smart home, where we simulate the operation of the household, use individual home devices and evaluate the use, consumption, leisure and working time of individual persons.
 ## UML use case diagram
-![UML use case diagram](/aivazart/SemWorkDocs/UseCaseDiagram.drawio.png)
+![UML use case diagram](SemWorkDocs/UseCaseDiagram.drawio.png)
 ## UML Class diagram
-![UML Class diagram](aivazart/SemWorkDocs/ClasDiagram.drawio.png)
+![UML Class diagram](SemWorkDocs/ClasDiagram.drawio.png)
 ## Functional requirements
 ### From the assignment
 "+" means that paragraph has been successfully completed. <br/>
